@@ -13,24 +13,24 @@ namespace ConsoleApp
             a = -9 b = -3 -> max = -3, min = -9
             */  
             
-            int correctNamber()
+            int correctNamber() //Функция проверки вводимого числа 
             {
-                int namber;
-                while (!int.TryParse(Console.ReadLine(), out namber))
+                int namber; // обьявляем переменную namber типа integer
+                while (!int.TryParse(Console.ReadLine(), out namber)) // Вводим символы. Проверяем если введенно не число выполняем цикл. Если введено число передаем его в переменную namber
                 {
                     Console.WriteLine("Ошибка ввода! Введите целое число!");
                 }
-                return Convert.ToInt32(namber);
+                return Convert.ToInt32(namber); // После выполнения функции возвращаем namber с типом integer
             }
             
-            void minOrMax (int namberOne, int namberTwo)
+            void minOrMax (int namberOne, int namberTwo) //Функция определения минимального и максимального числа из двух введенных чисел 
             {
-                if (namberOne > namberTwo)
+                if (namberOne > namberTwo) // Если первое число больше второго
                 {
-                    Console.WriteLine($"max = {namberOne}");
+                    Console.WriteLine($"max = {namberOne}"); 
                     Console.WriteLine($"min = {namberTwo}");               
                 }
-                else if (namberOne == namberTwo)
+                else if (namberOne == namberTwo) // Если первое число равно второму
                 {
                     Console.WriteLine("Введенные числа равны. min, max - нет.");
                 }
@@ -42,11 +42,11 @@ namespace ConsoleApp
             }
 
             Console.WriteLine("Введите первое число:");
-            int namberOne = correctNamber();
+            int namberOne = correctNamber(); // Объявляем переменную namberOne и присваиваем ей значение полученное из функии correctNamber
             Console.WriteLine("Введите второе число:");
-            int namberTwo = correctNamber();
+            int namberTwo = correctNamber(); // Объявляем переменную namberTwo и присваиваем ей значение полученное из функии correctNamber
             
-            minOrMax(namberOne, namberTwo);
+            minOrMax(namberOne, namberTwo); // Выполняем функцию minOrMax с атрибутами namberOne и namberTwo
         
             /*
             Задача 4: Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.
@@ -54,26 +54,26 @@ namespace ConsoleApp
             44 5 78 -> 78
             22 3 9 -> 22
             */
-            void maxNamberOfThree (int namberOne, int namberTwo, int namberThree)
+            void maxNamberOfThree (int namberOne, int namberTwo, int namberThree) // Функция которая принимает на вход три числа и выдаёт максимальное из этих чисел.
             {
-                if (namberOne > namberTwo)
+                if (namberOne > namberTwo) // Если первое число больше второго
                 {
-                    if (namberOne > namberThree)
+                    if (namberOne > namberThree) //Если первое число больше третьего
                     {
                         Console.WriteLine($"max = {namberOne}");
                     }
-                    else
+                    else //Если первое число меньше или равно третьему. 
                     {
-                        Console.WriteLine($"max = {namberThree}");
+                        Console.WriteLine($"max = {namberThree}"); // В случае если 1 и 3 числа равны будем брать за максимум значение числа 3, так как они оба будут по отношению ко 2 числу максимальными. При условии что 3 число больше выводим его на экран. 
                     }
                 }
-                else if (namberOne == namberTwo && namberOne == namberThree)
+                else if (namberOne == namberTwo && namberOne == namberThree) // Если все числа равны
                 {
                     Console.WriteLine("Введенные числа равны. Max - нет.");
                 }
-                else
+                else //Если первое число меньше или равно второму. 
                 {
-                    if (namberTwo > namberThree)
+                    if (namberTwo > namberThree) // Если второе число больше третьего
                     {
                         Console.WriteLine($"max = {namberTwo}");
                     }
@@ -84,12 +84,12 @@ namespace ConsoleApp
                 }
             }
             Console.WriteLine("Введите первое число:");
-            int namberA = correctNamber();
+            int namberA = correctNamber(); // Объявляем переменную namberOne и присваиваем ей значение полученное из функии correctNamber
             Console.WriteLine("Введите второе число:");
-            int namberB = correctNamber();
+            int namberB = correctNamber(); // Объявляем переменную namberB и присваиваем ей значение полученное из функии correctNamber
             Console.WriteLine("Введите третье число:");
-            int namberC = correctNamber();
-            maxNamberOfThree(namberA, namberB, namberC);    
+            int namberC = correctNamber(); // Объявляем переменную namberC и присваиваем ей значение полученное из функии correctNamber
+            maxNamberOfThree(namberA, namberB, namberC); // Выполняем функцию maxNamberOfThree с атрибутами namberA, namberB, namberC
             
             /*
             Задача 6: Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).
@@ -97,7 +97,7 @@ namespace ConsoleApp
             -3 -> нет
             7 -> нет
             */
-            void evenOrOdd (int namber)
+            void evenOrOdd (int namber) // Функция которая на вход принимает число и выдаёт четное оно или нет.
             {
                 if (namber%2 == 0)
                 {
@@ -118,7 +118,7 @@ namespace ConsoleApp
             8 -> 2, 4, 6, 8
             Ссылка на дополнительные задачи (их решать не обязательно):  
             */
-            void allEvenNumbersUpToN (int namber)
+            void allEvenNumbersUpToN (int namber) // Функция которая на вход принимает число, а на выходе показывает все чётные числа от 1 до полученного числа.
             {
                 if (namber == 1)
                 {
@@ -134,13 +134,13 @@ namespace ConsoleApp
                     {
                         if (i%2 == 0)
                         {
-                            if (i == namber || i == namber-1 )
+                            if (i == namber || i == namber-1 ) // Если значение счетчика i равно введенному числу (для четного введенного числа) или равно введенному числу - 1 (для нечетного введенного числа)
                             {
-                                Console.Write($"{i} ");
+                                Console.Write($"{i} "); // выводим последнее четное число без запятой
                             }
                             else
                             {
-                                Console.Write($"{i}, ");
+                                Console.Write($"{i}, "); // выводим все четные числа кроме последнего
                             }
                         }
                     }
