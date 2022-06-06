@@ -48,7 +48,49 @@ namespace ConsoleApp
             
             minOrMax(namberOne, namberTwo);
         
-        
+        /*
+        Задача 4: Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.
+        2, 3, 7 -> 7
+        44 5 78 -> 78
+        22 3 9 -> 22
+        */
+        void maxNamberOfThree (int namberOne, int namberTwo, int namberThree)
+        {
+            if (namberOne > namberTwo)
+            {
+                if (namberOne > namberThree)
+                {
+                    Console.WriteLine($"max = {namberOne}");
+                }
+                else
+                {
+                    Console.WriteLine($"max = {namberThree}");
+                }
+            }
+            else if (namberOne == namberTwo && namberOne == namberThree)
+            {
+                Console.WriteLine("Введенные числа равны. Max - нет.");
+            }
+            else
+            {
+                if (namberTwo > namberThree)
+                {
+                    Console.WriteLine($"max = {namberTwo}");
+                }
+                else
+                {
+                    Console.WriteLine($"max = {namberThree}");
+                }
+            }
+        }
+        Console.WriteLine("Введите первое число:");
+        int namberA = correctNamber();
+        Console.WriteLine("Введите второе число:");
+        int namberB = correctNamber();
+        Console.WriteLine("Введите третье число:");
+        int namberC = correctNamber();
+        maxNamberOfThree(namberA, namberB, namberC);
+
         }          
     }
 }
