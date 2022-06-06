@@ -111,6 +111,44 @@ namespace ConsoleApp
             Console.WriteLine("Введите число:");
             int youNamber = correctNamber();
             evenOrOdd(youNamber);
+
+            /*
+            Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
+            5 -> 2, 4
+            8 -> 2, 4, 6, 8
+            Ссылка на дополнительные задачи (их решать не обязательно):  
+            */
+            void allEvenNumbersUpToN (int namber)
+            {
+                if (namber == 1)
+                {
+                    Console.Write($"Введенное вами число {namber}. Целых четных чисел от 1 до {namber} нет.");
+                }
+                else if (namber < 0)
+                {
+                    Console.Write($"Введенное вами число {namber} отрицательное.");
+                }
+                else
+                {
+                    for (int i = 1; i <= namber; i++)
+                    {
+                        if (i%2 == 0)
+                        {
+                            if (i == namber || i == namber-1 )
+                            {
+                                Console.Write($"{i} ");
+                            }
+                            else
+                            {
+                                Console.Write($"{i}, ");
+                            }
+                        }
+                    }
+                }
+            }
+            Console.WriteLine("Введите целое положительное число:");
+            int namberD = correctNamber();
+            allEvenNumbersUpToN(namberD);
         }
     }
 }
