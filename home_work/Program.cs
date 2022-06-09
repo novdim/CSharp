@@ -181,7 +181,35 @@ namespace ConsoleApp
             Console.WriteLine("Введите целое положительное число:");
             int namberF = CorrectNamber();
             PrintNamberUnits(namberF);
-
+            
+            /*
+            Задача 2. Даны два числа a, b, такие что a < b. Вывести на экран сколько раз число a поместиться в числе b.
+            */
+            void HowMuchNamberAInNamberB (int a, int b) // Метод (функция) определения сколько раз число a поместиться в числе b.
+            {
+                while(true) // объявляем бесконечный цикл который будет выполняться пока не будут введены корректные числа для а,b
+                {
+                    if (a < b && a > 0) // кроме проверки a меньше b проверяем с условием (И) чтобы а было полоительным, так как отрицательные числа не могут повторятся в положительных
+                    { 
+                        int result = b / a; // обьявляем переменную namber типа integer, чтобы при выводе было целое число без остатка
+                        Console.WriteLine($"Число a поместится в число b {result} раз(а).");
+                        break; // завершаем цикл 
+                    }
+                    else
+                    {
+                        Console.WriteLine("Введенные вами числа не соответствуют условиям задачи. Число а должно быть меньше b и должно быть положительным. Повторите ввод!");
+                        Console.WriteLine("Введите число a:");
+                        a = CorrectNamber();
+                        Console.WriteLine("Введите число b:");
+                        b = CorrectNamber();
+                    }
+                }
+            }
+            Console.WriteLine("Введите число a:");
+            int namberG = CorrectNamber();
+            Console.WriteLine("Введите число b:");
+            int namberH = CorrectNamber();
+            HowMuchNamberAInNamberB(namberG, namberH);
             
         }
     }
