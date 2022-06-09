@@ -13,17 +13,17 @@ namespace ConsoleApp
             a = -9 b = -3 -> max = -3, min = -9
             */  
             
-            int correctNamber() //Функция проверки вводимого числа 
+            int CorrectNamber() // Метод (функция) проверки вводимого числа 
             {
                 int namber; // обьявляем переменную namber типа integer
                 while (!int.TryParse(Console.ReadLine(), out namber)) // Вводим символы. Проверяем если введенно не число выполняем цикл. Если введено число передаем его в переменную namber
                 {
                     Console.WriteLine("Ошибка ввода! Введите целое число!");
                 }
-                return Convert.ToInt32(namber); // После выполнения функции возвращаем namber с типом integer
+                return Convert.ToInt32(namber); // После выполнения метода(функции) возвращаем namber с типом integer
             }
             
-            void minOrMax (int namberOne, int namberTwo) //Функция определения минимального и максимального числа из двух введенных чисел 
+            void MinOrMax (int namberOne, int namberTwo) // Метод(функция) определения минимального и максимального числа из двух введенных чисел 
             {
                 if (namberOne > namberTwo) // Если первое число больше второго
                 {
@@ -42,11 +42,11 @@ namespace ConsoleApp
             }
 
             Console.WriteLine("Введите первое число:");
-            int namberOne = correctNamber(); // Объявляем переменную namberOne и присваиваем ей значение полученное из функии correctNamber
+            int namberOne = CorrectNamber(); // Объявляем переменную namberOne и присваиваем ей значение полученное из функии CorrectNamber
             Console.WriteLine("Введите второе число:");
-            int namberTwo = correctNamber(); // Объявляем переменную namberTwo и присваиваем ей значение полученное из функии correctNamber
+            int namberTwo = CorrectNamber(); // Объявляем переменную namberTwo и присваиваем ей значение полученное из функии CorrectNamber
             
-            minOrMax(namberOne, namberTwo); // Выполняем функцию minOrMax с атрибутами namberOne и namberTwo
+            MinOrMax(namberOne, namberTwo); // Выполняем метод(функцию) MinOrMax с атрибутами namberOne и namberTwo
         
             /*
             Задача 4: Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.
@@ -54,7 +54,7 @@ namespace ConsoleApp
             44 5 78 -> 78
             22 3 9 -> 22
             */
-            void maxNamberOfThree (int namberOne, int namberTwo, int namberThree) // Функция которая принимает на вход три числа и выдаёт максимальное из этих чисел.
+            void MaxNamberOfThree (int namberOne, int namberTwo, int namberThree) // Метод (функция) который(ая) принимает на вход три числа и выдаёт максимальное из этих чисел.
             {
                 if (namberOne > namberTwo) // Если первое число больше второго
                 {
@@ -84,12 +84,12 @@ namespace ConsoleApp
                 }
             }
             Console.WriteLine("Введите первое число:");
-            int namberA = correctNamber(); // Объявляем переменную namberOne и присваиваем ей значение полученное из функии correctNamber
+            int namberA = CorrectNamber(); // Объявляем переменную namberOne и присваиваем ей значение полученное из функии CorrectNamber
             Console.WriteLine("Введите второе число:");
-            int namberB = correctNamber(); // Объявляем переменную namberB и присваиваем ей значение полученное из функии correctNamber
+            int namberB = CorrectNamber(); // Объявляем переменную namberB и присваиваем ей значение полученное из функии CorrectNamber
             Console.WriteLine("Введите третье число:");
-            int namberC = correctNamber(); // Объявляем переменную namberC и присваиваем ей значение полученное из функии correctNamber
-            maxNamberOfThree(namberA, namberB, namberC); // Выполняем функцию maxNamberOfThree с атрибутами namberA, namberB, namberC
+            int namberC = CorrectNamber(); // Объявляем переменную namberC и присваиваем ей значение полученное из функии CorrectNamber
+            MaxNamberOfThree(namberA, namberB, namberC); // Выполняем метод (функцию) MaxNamberOfThree с атрибутами namberA, namberB, namberC
             
             /*
             Задача 6: Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).
@@ -97,7 +97,7 @@ namespace ConsoleApp
             -3 -> нет
             7 -> нет
             */
-            void evenOrOdd (int namber) // Функция которая на вход принимает число и выдаёт четное оно или нет.
+            void EvenOrOdd (int namber) // Метод (функция) которая на вход принимает число и выдаёт четное оно или нет.
             {
                 if (namber%2 == 0)
                 {
@@ -109,8 +109,8 @@ namespace ConsoleApp
                 }
             }
             Console.WriteLine("Введите число:");
-            int youNamber = correctNamber();
-            evenOrOdd(youNamber);
+            int youNamber = CorrectNamber();
+            EvenOrOdd(youNamber);
 
             /*
             Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
@@ -118,7 +118,7 @@ namespace ConsoleApp
             8 -> 2, 4, 6, 8
             Ссылка на дополнительные задачи (их решать не обязательно):  
             */
-            void allEvenNumbersUpToN (int namber) // Функция которая на вход принимает число, а на выходе показывает все чётные числа от 1 до полученного числа.
+            void AllEvenNumbersUpToN (int namber) // Метод (функция) который(ая) на вход принимает число, а на выходе показывает все чётные числа от 1 до полученного числа.
             {
                 if (namber == 1)
                 {
@@ -136,7 +136,7 @@ namespace ConsoleApp
                         {
                             if (i == namber || i == namber-1 ) // Если значение счетчика i равно введенному числу (для четного введенного числа) или равно введенному числу - 1 (для нечетного введенного числа)
                             {
-                                Console.Write($"{i} "); // выводим последнее четное число без запятой
+                                Console.Write($"{i} \n"); // выводим последнее четное число без запятой
                             }
                             else
                             {
@@ -147,8 +147,42 @@ namespace ConsoleApp
                 }
             }
             Console.WriteLine("Введите целое положительное число:");
-            int namberD = correctNamber();
-            allEvenNumbersUpToN(namberD);
+            int namberD = CorrectNamber();
+            AllEvenNumbersUpToN(namberD);
+
+            //Семинар 1. Дополнительные задачи.
+
+            /*
+            Задача 1. Пользователь вводит число N (N > 0). Программа должна вывести N единиц на экран.
+            N = 4 -> 1, 1, 1, 1
+            N = 2 -> 1, 1
+            */
+            void PrintNamberUnits (int namber) // Метод (функция) вывода N единиц на экран
+            {
+                if (namber < 0)
+                {
+                    Console.WriteLine($"Введенное вами число {namber} отрицательное. \n");
+                }
+                else
+                {
+                    for (int i = 0; i < namber; i++)
+                    {
+                        if (i == namber-1) // Если значение счетчика i равно введенному числу - 1. (-1 потому что отсчет цикла начинается с 0) 
+                        {
+                            Console.Write("1 \n"); // выводим последнее четное число без запятой
+                        }
+                        else
+                        {
+                            Console.Write("1, "); // выводим все четные числа кроме последнего
+                        }
+                    }    
+                }
+            }
+            Console.WriteLine("Введите целое положительное число:");
+            int namberF = CorrectNamber();
+            PrintNamberUnits(namberF);
+
+            
         }
     }
 }
