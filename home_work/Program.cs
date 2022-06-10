@@ -211,6 +211,98 @@ namespace ConsoleApp
             int namberH = CorrectNamber();
             HowMuchNamberAInNamberB(namberG, namberH);
             
+            //Задача 3. На ввод подаётся рост трёх спортсменов. Расположить их от большего к меньшему.
+            void GrowthOfAthletes (int athletOne, int athletTwo, int athletThree)
+            {
+                int[] arrayAthletes = {athletOne, athletTwo, athletThree};
+                int temp;
+                while (true)
+                {
+                    if (arrayAthletes[0] > 0 && arrayAthletes[1] > 0 && arrayAthletes[2] > 0)
+                    {
+                        for (int i = 0; i < arrayAthletes.Length-1; i++)
+                        {
+                            for (int j = i + 1; j < arrayAthletes.Length; j++)
+                            {
+                                if (arrayAthletes[i] < arrayAthletes[j])
+                                {
+                                    temp = arrayAthletes[i];
+                                    arrayAthletes[i] = arrayAthletes[j];
+                                    arrayAthletes[j] = temp;
+                                }
+                            }
+                        }
+                        
+                        for (int i = 0; i < arrayAthletes.Length; i++)
+                        {
+                            if (i == arrayAthletes.Length-1)
+                            {
+                                Console.Write($"{arrayAthletes[i]} \n");
+                            }
+                            else
+                            {
+                                Console.Write($"{arrayAthletes[i]}, ");
+                            }
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Введенные вами числа не соответствуют условиям задачи. Рост спортсмена не может быть отрицательным. Повторите ввод!");
+                        Console.WriteLine("Введите рост первого спортсмена:");
+                        arrayAthletes[0] = CorrectNamber();
+                        Console.WriteLine("Введите рост второго спортсмена:");
+                        arrayAthletes[1] = CorrectNamber();
+                        Console.WriteLine("Введите рост третьего спортсмена:");
+                        arrayAthletes[2] = CorrectNamber();                        
+                    }
+                }
+            }
+            Console.WriteLine("Введите рост первого спортсмена:");
+            int growthAthletOne = CorrectNamber();
+            Console.WriteLine("Введите рост второго спортсмена:");
+            int growthAthletTwo = CorrectNamber();
+            Console.WriteLine("Введите рост третьего спортсмена:");
+            int growthAthletThree = CorrectNamber();
+            GrowthOfAthletes (growthAthletOne, growthAthletTwo, growthAthletThree);
+            /*
+            Задача 4. Дано N секунд. Вывести время в формате часы:минуты:секунды. N = 72334 -> 20:5:34
+            */
+            void SecondsСalculator (int seconds)
+            {
+                int watch = seconds/3600;
+                int restOfSeconds = seconds - watch*3600;
+                int minutes = restOfSeconds/60;
+                restOfSeconds = restOfSeconds - minutes*60;
+                if (watch > 10)
+                {
+                    Console.Write($"{watch}:");
+                }
+                else
+                {
+                    Console.Write($"0{watch}:");
+                }
+                if (minutes > 10)
+                {
+                    Console.Write($"{minutes}:");
+                }
+                else
+                {
+                    Console.Write($"0{minutes}:");
+                }
+                
+                if (restOfSeconds > 10)
+                {
+                    Console.Write($"{restOfSeconds}");
+                }
+                else
+                {
+                    Console.Write($"0{restOfSeconds}");
+                }
+            }
+            Console.WriteLine("Введите количество секунд:");
+            int numberOfSeconds = CorrectNamber();
+            SecondsСalculator(numberOfSeconds);
         }
     }
 }
