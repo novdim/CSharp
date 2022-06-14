@@ -32,19 +32,56 @@ namespace ConsoleApp
                 }
                 else
                 {
-                    Console.WriteLine($"Третья цифра введенного числа - {numberModulo.ToString()[2]}"); // Преобразуем numberModulo в строку и выведем 3 элемент 
+                    Console.WriteLine($"Третья цифра введенного числа: {numberModulo.ToString()[2]}"); // Преобразуем numberModulo в строку и выведем 3 элемент 
                 }
             }
             
             Console.WriteLine("Введите число");
-            int numberA = CorrectNamber(); // Объявляем переменную namberOne и присваиваем ей значение полученное из функии CorrectNamber
-            OutputThirdDigitNumber(numberA);
+            int thirdDigit = CorrectNamber(); // Объявляем переменную thirdDigit и присваиваем ей значение полученное из функии CorrectNamber
+            OutputThirdDigitNumber(thirdDigit);
+
             /*
                 Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
                 6 -> да
                 7 -> да
                 1 -> нет
             */
+
+            void WeekdaysOrWeekends (int number) // Метод который принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
+            {
+                int dayWeek = number - 7*(number/7);
+                /* добавляем возможность определния дня недели если введено число больше 7.
+                    Присваеваем dayWeek разницу между введенным числом и количетсвом дней для полных недель.
+                 */
+                while(true) // создаем бескоечный цикл, который завершится когда пользователь введет число больше 0
+                {
+                    if (number > 0) // проверяем чтобы введенное число было больше 0
+                    {
+                        if (dayWeek == 6 || dayWeek == 7 || dayWeek == 0) 
+                        /*
+                         Проверяем если полученное значение разницы равно 6 или 7 значит введенная цифра выходной. Проверка на 0 нужна для случая, если пользователь введет цифру кратную 7. 
+                        */
+                        {
+                            Console.WriteLine("Да. Введенная цифра выходной день");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Нет. Введенная цифра будний день");
+                        }
+                    break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Введенное число меньше или равно 0. ");
+                        Console.WriteLine("Введите число");
+                        number = CorrectNamber();
+                    }
+                }
+            }
+            
+            Console.WriteLine("Введите число");
+            int numberDayWeek = CorrectNamber(); // Объявляем переменную numberB и присваиваем ей значение полученное из функии CorrectNamber
+            WeekdaysOrWeekends(numberDayWeek);
 
 
             /*
