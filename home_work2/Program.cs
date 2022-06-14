@@ -73,9 +73,9 @@ namespace ConsoleApp
                     else
                     {
                         Console.WriteLine("Введенное число меньше или равно 0. ");
-                        Console.WriteLine("Введите число");
-                        number = CorrectNamber();
                     }
+                    Console.WriteLine("Введите число");
+                    number = CorrectNamber();
                 }
             }
             
@@ -92,6 +92,49 @@ namespace ConsoleApp
             /*
                 Задача 1. Написать программу, которая определяет, является ли треугольник со сторонами a, b, c равнобедренным.
             */
+            void DefinitionIsoscelesTriangle (int sideA, int sideB, int sideC)
+            {
+                while(true)
+                {
+                    if (sideA > 0 && sideB > 0 && sideC > 0)
+                    {
+                        if (sideA < sideB+sideC && sideB < sideA+sideC && sideC < sideA+sideB)
+                            {
+                                if(sideA == sideB || sideA == sideC || sideB == sideC)
+                            {
+                                Console.WriteLine($"Треугольник со сторонами A:{sideA}, B:{sideB}, C:{sideC}. Равнобедренный.");   
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Треугольник со сторонами A:{sideA}, B:{sideB}, C:{sideC}. Не равнобедренный.");
+                            }
+                        break;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Треугольника со сторонами A:{sideA}, B:{sideB}, C:{sideC} не существует. Треугольник существует только тогда, когда сумма любых двух его сторон больше третьей. Повторите ввод!!!");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Введенные значения сторон a,b,c меньше или равны 0. Повторите ввод!!!");
+                    }
+                    Console.WriteLine("Введите длину стороны AB");
+                    sideA = CorrectNamber();
+                    Console.WriteLine("Введите длину стороны BC");
+                    sideB = CorrectNamber();
+                    Console.WriteLine("Введите длину стороны CA");
+                    sideC = CorrectNamber();
+                }
+            }
+          
+            Console.WriteLine("Введите длину стороны AB");
+            int sideAB = CorrectNamber();
+            Console.WriteLine("Введите длину стороны BC");
+            int sideBC = CorrectNamber();
+            Console.WriteLine("Введите длину стороны CA");
+            int sideCA = CorrectNamber();
+            DefinitionIsoscelesTriangle(sideAB, sideBC, sideCA);
 
             /*
                 Задача 2. На вход подаются год, номер месяца и день рождения человека, Определить возраст человека на момент 1 июля 2022 года.
