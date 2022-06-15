@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace ConsoleApp
 {
     class Program
@@ -53,7 +54,7 @@ namespace ConsoleApp
                 /* добавляем возможность определния дня недели если введено число больше 7.
                     Присваеваем dayWeek разницу между введенным числом и количетсвом дней для полных недель.
                  */
-                while(true) // создаем бескоечный цикл, который завершится когда пользователь введет число больше 0
+                while(true) // создаем бесконечный цикл, который завершится когда пользователь введет число больше 0
                 {
                     if (number > 0) // проверяем чтобы введенное число было больше 0
                     {
@@ -98,7 +99,7 @@ namespace ConsoleApp
                 {
                     if (sideA > 0 && sideB > 0 && sideC > 0)
                     {
-                        if (sideA < sideB+sideC && sideB < sideA+sideC && sideC < sideA+sideB)
+                        if (sideA < sideB+sideC && sideB < sideA+sideC && sideC < sideA+sideB) // проверяем наличие треугольника
                             {
                                 if(sideA == sideB || sideA == sideC || sideB == sideC)
                             {
@@ -112,7 +113,8 @@ namespace ConsoleApp
                         }
                         else
                         {
-                            Console.WriteLine($"Треугольника со сторонами A:{sideA}, B:{sideB}, C:{sideC} не существует. Треугольник существует только тогда, когда сумма любых двух его сторон больше третьей. Повторите ввод!!!");
+                            Console.WriteLine($"Треугольника со сторонами A:{sideA}, B:{sideB}, C:{sideC} не существует. \n" + 
+                            "Треугольник существует только тогда, когда сумма любых двух его сторон больше третьей. Повторите ввод!!!");
                         }
                     }
                     else
@@ -139,7 +141,109 @@ namespace ConsoleApp
             /*
                 Задача 2. На вход подаются год, номер месяца и день рождения человека, Определить возраст человека на момент 1 июля 2022 года.
             */
+            void DetermineAgePerson (int year, int month, int day) // метод расчета возраста человека на 01.07.2022
+            {            
 
+                while(true) 
+                {
+                    if (year > 2022 || year >= 2022 && month > 6 || month > 12 || month < 1 || day > 31 || day < 1) // проверка ввода 
+                    {
+                        Console.WriteLine("Введены некорректные данные. Повторите ввод!");
+                        Console.WriteLine("Введите год");
+                        year = CorrectNamber();
+                        Console.WriteLine("Введите месяц");
+                        month = CorrectNamber();
+                        Console.WriteLine("Введите день");
+                        day = CorrectNamber();
+                    }
+                    else
+                    {
+                        DateTime userBirthday = new DateTime(2022, month, day); // объявляем переменую userBirthday с введенными данными (месяца и дня) 
+                        DateTime calculationDate = new DateTime(2022, 7, 1); // объявляем переменую calculationDate - расчетная дата 01.07.2022 
+                        TimeSpan differenceDay = calculationDate - userBirthday; // расчитываем разницу между расчетной датой и введенной
+
+                        string ageYear, ageMonth, ageDay; // объявлеем строковые переменные для того чтобы при определенных условиях задать им значения текта, который будет за цифрой года, месяца и дня *года, месяцев, дней*
+                        
+                        int countYear = calculationDate.Year - year; // расчет лет, если день рождения наступил
+                        int countYearIfBirthdayNotCome = calculationDate.Year - year - 1; // расчет лет, если день рождения не наступил
+                        int countMonth = calculationDate.Month - month; // расчет месяцев, если день рождения наступил
+                        int countMonthIfBirthdayNotCome = 12 - month + calculationDate.Month - 1 ; // расчет месяцев, если день рождения не наступил
+                        int[] daysInMonths = {31,28,31,30,31,30,31,31,30,31,30,31};
+                        int countDay = daysInMonths[month-1] - day; 
+
+                        if (differenceDay.Days < 0) // Если разница в днях между введенными и расчетными (месяцем и днем) меньше 0 значить ДР не наступил
+                        {
+                            countYear = countYearIfBirthdayNotCome; // переменной countYear присваемваем значение переменной countYearIfBirthdayNotCome (в которой мы расчитывали кол-во лет если ДР не наступил)
+                            countMonth = countMonthIfBirthdayNotCome; // переменной countMonth присваемваем значение переменной countMonthIfBirthdayNotCome (в которой мы расчитывали кол-во месяцев если ДР не наступил)
+                            countDay = countDay+1;
+                        }
+                        else if (day > 1) // если кол-во введенных дней больше 1 то месяц будет не полный и не обходимо вычесть 1 
+                        {
+                            countMonth = countMonth-1;
+                        }
+
+                        if (day == 1) // если кол-во введенных дней равно 1 то месяц будет полный кол-во месяцев увеличиваем на 1, а значению кол-ва дней присваиваем 0
+                        {
+                            countDay = 0;
+                            countMonth = countMonth + 1;
+                        }
+
+                        int remainYear = countYear%10; 
+                        
+                        if (remainYear >=5 && remainYear <= 9 || remainYear == 0 || countYear >= 10 && countYear <= 20)
+                        {
+                            ageYear = " лет";
+                        }
+                        else if (remainYear >= 2 && remainYear <= 4)
+                        {
+                            ageYear = " года";
+                        }
+                        else
+                        {
+                            ageYear = " год";
+                        }
+                        
+                        if (countMonth >=5 && countMonth <= 12 || countMonth == 0)
+                        {
+                            ageMonth = " месяцев";
+                        }
+                        else if (countMonth >= 2 && countMonth <= 4)
+                        {
+                            ageMonth = " месяца";
+                        }
+                        else
+                        {
+                            ageMonth = " месяц";
+                        }
+
+                        int remainDay = countDay%10;
+
+                        if (remainDay >=5 && remainDay <= 9 || remainDay == 0 || countYear >= 10 && countYear <= 20)
+                        {
+                            ageDay = " дней";
+                        }
+                        else if (remainDay >= 2 && remainDay <= 4)
+                        {
+                            ageDay = " дня";
+                        }
+                        else
+                        {
+                            ageDay = " день";
+                        }
+
+                        Console.WriteLine($"Возраст {countYear}{ageYear} {countMonth}{ageMonth} {countDay}{ageDay}");
+                        break;
+                    }
+                }
+            }
+            
+            Console.WriteLine("Введите год");
+            int numberYear = CorrectNamber();
+            Console.WriteLine("Введите месяц");
+            int numberMonth = CorrectNamber();
+            Console.WriteLine("Введите день");
+            int numberDay = CorrectNamber();
+            DetermineAgePerson(numberYear, numberMonth, numberDay);
             /*
                 Задача 3. Иван в начале года открыл счет в банке, вложив 1000 руб. Через каждый месяц размер вклада увеличивается на 1.5% от имеющейся суммы. 
                 Определить размер депозита через n месяцев.
