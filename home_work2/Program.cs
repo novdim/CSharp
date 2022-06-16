@@ -141,12 +141,44 @@ namespace ConsoleApp
             /*
                 Задача 2. На вход подаются год, номер месяца и день рождения человека, Определить возраст человека на момент 1 июля 2022 года.
             */
+
+            Console.WriteLine("Введите год");
+            int numberYear = CorrectNamber();
+            Console.WriteLine("Введите месяц");
+            int numberMonth = CorrectNamber();
+            Console.WriteLine("Введите день");
+            int numberDay = CorrectNamber();
+            
+
+            bool DefinitionHighYears (int year) // метод определения высокостного года
+            {
+                bool years;
+
+                if (year%4 == 0 && year%100 != 0 || year%4 == 0 && year%400 == 0) // условие высокостного года
+                {
+                    years = true;
+                }
+                else
+                {
+                    years = false;
+                }
+
+                return years; // возвращаем true или false в зависимости от введеного года
+            }
+            
+            bool typeYears =  DefinitionHighYears(numberYear); // в переменной typeYears присваеваем значение полученное в результате выполнения метода DefinitionHighYears с введенным параметом numberYear
+
             void DetermineAgePerson (int year, int month, int day) // метод расчета возраста человека на 01.07.2022
             {            
+                int[] daysInMonths = {31,28,31,30,31,30,31,31,30,31,30,31}; // объявляем массив с кол-вом дней в месяцах
 
-                while(true) 
+                while(true) // Бесконечный цикл. Пока не будут введены корректные данные и не будет выведен разультат цикл не остановится.
                 {
-                    if (year > 2022 || year >= 2022 && month > 6 || month > 12 || month < 1 || day > 31 || day < 1) // проверка ввода 
+                    if(typeYears == true && month == 2 && day == 29) // если пользователь ввел высокостный год и дату 29.02. присваиваем значение 28 дней
+                    {
+                        day = 28;
+                    }
+                    if (year > 2022 || year < 1800 || year >= 2022 && month > 6 || month > 12 || month < 1 || day > 31 || day < 1 || day > daysInMonths[month-1]) // проверка ввода 
                     {
                         Console.WriteLine("Введены некорректные данные. Повторите ввод!");
                         Console.WriteLine("Введите год");
@@ -158,34 +190,44 @@ namespace ConsoleApp
                     }
                     else
                     {
-                        DateTime userBirthday = new DateTime(2022, month, day); // объявляем переменую userBirthday с введенными данными (месяца и дня) 
-                        DateTime calculationDate = new DateTime(2022, 7, 1); // объявляем переменую calculationDate - расчетная дата 01.07.2022 
+                        DateTime userBirthday = new DateTime(2022, month, day); // объявляем переменую userBirthday с введенными данными (месяца и дня)
+                        DateTime calculationDate = new DateTime(2022, 7, 1); // объявляем переменую calculationDate - расчетная дата 01.07.2022
+
                         TimeSpan differenceDay = calculationDate - userBirthday; // расчитываем разницу между расчетной датой и введенной
 
-                        string ageYear, ageMonth, ageDay; // объявлеем строковые переменные для того чтобы при определенных условиях задать им значения текта, который будет за цифрой года, месяца и дня *года, месяцев, дней*
+                        string ageYear, ageMonth, ageDay; // объявлеем строковые переменные для того чтобы при определенных условиях задать им значения текcта, который будет за цифрой года, месяца и дня *года, месяцев, дней*
                         
-                        int countYear = calculationDate.Year - year; // расчет лет, если день рождения наступил
-                        int countYearIfBirthdayNotCome = calculationDate.Year - year - 1; // расчет лет, если день рождения не наступил
+                        int countYear = calculationDate.Year - year; // расчет лет, если день рождения наступил    
                         int countMonth = calculationDate.Month - month; // расчет месяцев, если день рождения наступил
-                        int countMonthIfBirthdayNotCome = 12 - month + calculationDate.Month - 1 ; // расчет месяцев, если день рождения не наступил
-                        int[] daysInMonths = {31,28,31,30,31,30,31,31,30,31,30,31};
-                        int countDay = daysInMonths[month-1] - day; 
 
-                        if (differenceDay.Days < 0) // Если разница в днях между введенными и расчетными (месяцем и днем) меньше 0 значить ДР не наступил
+                        int countDay = 30 - day + 1; 
+
+                        if (countDay == 0)
                         {
-                            countYear = countYearIfBirthdayNotCome; // переменной countYear присваемваем значение переменной countYearIfBirthdayNotCome (в которой мы расчитывали кол-во лет если ДР не наступил)
-                            countMonth = countMonthIfBirthdayNotCome; // переменной countMonth присваемваем значение переменной countMonthIfBirthdayNotCome (в которой мы расчитывали кол-во месяцев если ДР не наступил)
-                            countDay = countDay+1;
-                        }
-                        else if (day > 1) // если кол-во введенных дней больше 1 то месяц будет не полный и не обходимо вычесть 1 
-                        {
-                            countMonth = countMonth-1;
+                            countDay = countDay + 1;
                         }
 
-                        if (day == 1) // если кол-во введенных дней равно 1 то месяц будет полный кол-во месяцев увеличиваем на 1, а значению кол-ва дней присваиваем 0
+                        if (differenceDay.Days < 0 && day == 1) // 
                         {
+                            countYear = countYear - 1; // 
+                            countMonth = 12 + countMonth;
                             countDay = 0;
-                            countMonth = countMonth + 1;
+                        }
+                        else if (differenceDay.Days < 0 && day > 1) // 
+                        {
+                            countYear = countYear - 1; // 
+                            countMonth = 12 + countMonth - 1; // 
+                        }
+                        
+                        else if (differenceDay.Days > 0 && day == 1) // 
+                        {
+                            countMonth = calculationDate.Month - month;
+                            countDay = 0;
+                        }
+
+                        else if (differenceDay.Days > 0 && day > 1) // 
+                        {
+                            countMonth = calculationDate.Month - month - 1;
                         }
 
                         int remainYear = countYear%10; 
@@ -237,12 +279,6 @@ namespace ConsoleApp
                 }
             }
             
-            Console.WriteLine("Введите год");
-            int numberYear = CorrectNamber();
-            Console.WriteLine("Введите месяц");
-            int numberMonth = CorrectNamber();
-            Console.WriteLine("Введите день");
-            int numberDay = CorrectNamber();
             DetermineAgePerson(numberYear, numberMonth, numberDay);
             /*
                 Задача 3. Иван в начале года открыл счет в банке, вложив 1000 руб. Через каждый месяц размер вклада увеличивается на 1.5% от имеющейся суммы. 
