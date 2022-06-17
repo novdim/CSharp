@@ -107,14 +107,14 @@ namespace ConsoleApp
         A (7,-5, 0); B (1,-1,9) -> 11.53
         */
 
-        int CorrectNamber() // Метод (функция) проверки вводимого числа 
+        double CorrectNamber() // Метод (функция) проверки вводимого числа 
         {
-            int namber; // обьявляем переменную namber типа integer
-            while (!int.TryParse(Console.ReadLine(), out namber)) // Вводим символы. Проверяем если введенно не число выполняем цикл. Если введено число передаем его в переменную namber
+            double namber; // обьявляем переменную namber типа integer
+            while (!double.TryParse(Console.ReadLine(), out namber)) // Вводим символы. Проверяем если введенно не число выполняем цикл. Если введено число передаем его в переменную namber
             {
                 Console.WriteLine("Ошибка ввода! Введите число!");
             }
-            return Convert.ToInt32(namber); // После выполнения метода(функции) возвращаем namber с типом integer
+            return Convert.ToDouble(namber); // После выполнения метода(функции) возвращаем namber с типом double
         }
 
 
@@ -123,16 +123,22 @@ namespace ConsoleApp
             double sumDifferences = 0;
             for (int i = 0; i <= 2;  i++)
             {
-                sumDifferences = sumDifferences + Convert.ToInt32(Math.Pow((pointOne[i] - pointTwo[i]), 2));
+                sumDifferences = sumDifferences + Convert.ToDouble(Math.Pow((pointOne[i] - pointTwo[i]), 2));
             }
             Console.WriteLine($"{Math.Sqrt(sumDifferences)} ");
             
         }
+        Console.WriteLine("Введите кординату X точки A");
         double cordinateAx = CorrectNamber();
+        Console.WriteLine("Введите кординату Y точки A");
         double cordinateAy = CorrectNamber();
+        Console.WriteLine("Введите кординату Z точки A");
         double cordinateAz = CorrectNamber();
+        Console.WriteLine("Введите кординату X точки B");
         double cordinateBx = CorrectNamber();
+        Console.WriteLine("Введите кординату Y точки B");
         double cordinateBy = CorrectNamber();
+        Console.WriteLine("Введите кординату Z точки B");
         double cordinateBz = CorrectNamber();
 
         double[] pointA = {cordinateAx, cordinateAy, cordinateAz};
