@@ -19,7 +19,21 @@ namespace ConsoleApp
             }
             Console.WriteLine("Введите число:");
             int inputNumber = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("__________");
+            Console.WriteLine("Задача 26");
             SumNumbers(inputNumber);
+
+            // Задача 26: Напишите программу, которая принимает на вход число и выдаёт количество цифр в числе.
+
+            void CountNumbers (string number) //метод вывода кубов чисел от 1 до N.
+            {
+                char[] chars = number.ToCharArray();
+                Console.Write($"{chars.Length}");
+            }
+            Console.WriteLine("Введите число:");
+            string inputNumberA = Console.ReadLine();
+            CountNumbers(inputNumberA);
 
             
         }
