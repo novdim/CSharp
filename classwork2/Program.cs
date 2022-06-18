@@ -61,8 +61,35 @@ namespace ConsoleApp
             int inputNumberB = Convert.ToInt32(Console.ReadLine());
             multiplicationNumbers(inputNumberB);
 
+            //Задача 30: Напишите программу, которая выводит массив из 8 элементов, заполненный нулями и единицами в случайном порядке.
 
 
+            Console.WriteLine("__________");
+            Console.WriteLine("Задача 30");
+
+
+            void randArray (int lenArray)
+            {
+                Random randomA = new Random();
+                int[] array = new int[lenArray];
+                for (int i = 0; i <= lenArray-1; i++) 
+                {
+                    array[i] = randomA.Next(0,2);
+                    if (i == lenArray)
+                    {
+                        Console.Write($"{array[i]}");
+                    }
+                    else
+                    {
+                        Console.Write($"{array[i]}, ");
+                    }
+                }
+            }
+            randArray(8);
+            
+
+
+            
 
         }
     }
