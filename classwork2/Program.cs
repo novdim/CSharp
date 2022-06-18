@@ -75,7 +75,7 @@ namespace ConsoleApp
                 for (int i = 0; i <= lenArray-1; i++) 
                 {
                     array[i] = randomA.Next(0,2);
-                    if (i == lenArray)
+                    if (i == lenArray-1)
                     {
                         Console.Write($"{array[i]}");
                     }
