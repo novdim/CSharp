@@ -25,7 +25,7 @@ namespace ConsoleApp
             {
                 Random randomA = new Random();
                 int[] array = new int[lenArray];
-                for (int i = 0; i <= lenArray-1; i++) 
+                for (int i = 0; i < lenArray; i++) 
                 {
                     array[i] = randomA.Next(startRange,endRange);
                     Console.Write($"{array[i]} ");
@@ -36,7 +36,7 @@ namespace ConsoleApp
 
             int[] arrayNumber = RandArray(len, start, end);
                     
-            for (int i = 0; i <= len-1; i++) 
+            for (int i = 0; i < len; i++) 
             {
                 if (arrayNumber[i] < 0)
                 {
@@ -59,12 +59,12 @@ namespace ConsoleApp
 
             void changeArray (int[] array)
             {
-                for (int i = 0; i <= len-1; i++) 
+                for (int i = 0; i < len; i++) 
                 {
                     arrayNumber[i] = arrayNumber[i] * (-1);
                 }
 
-                for (int i = 0; i <= len-1; i++) 
+                for (int i = 0; i < len; i++) 
                 {
                     Console.Write($"{arrayNumber[i]} ");   
                 }
@@ -92,12 +92,12 @@ namespace ConsoleApp
                 {
                     if (inputNumber == arrayNumber[i]) 
                     {
-                        find = $"\n {inputNumber} да есть в массиве";
+                        find = $"\n {inputNumber} да есть в массиве \n";
                         break;
                     }
                     else
                     {
-                        find = $"\n {inputNumber} нет в массиве";
+                        find = $"\n {inputNumber} нет в массиве \n";
                     }
                 }
                 Console.Write(find);
@@ -110,6 +110,27 @@ namespace ConsoleApp
             [1, 2, 3, 6, 2] -> 0
             [10, 11, 12, 13, 14] -> 5
             */
+
+            int lenTwo = 123;
+            int startTwo = 1;
+            int endTwo = 124;
+            int countElements = 0;
+            int[] arrayTwo = RandArray(lenTwo, startTwo, endTwo);
+            findElementsArray(arrayTwo);
+
+            void findElementsArray (int[] array)
+            {
+                for (int i = 0; i < lenTwo; i++) 
+                {
+                    if (array[i] >=10 && array[i] < 100) 
+                    {
+                        countElements = 1 + countElements;
+                    }
+                }
+                Console.Write($"\n {countElements} элементов лежат в отрезке [10,99]");
+            }
+
+
 
             /*
             Задача 37: Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д. Результат запишите в новом массиве.
