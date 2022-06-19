@@ -80,9 +80,11 @@ namespace ConsoleApp
             Console.Write("\n _________ \n");
             Console.Write("Задача 33: \n");
 
-            string find = String.Empty;
-            int number = Convert.ToInt32(Console.ReadLine());
+
             int[] newArrayNumber = RandArray(len, start, end);
+            Console.WriteLine();
+            int number = Convert.ToInt32(Console.ReadLine());
+            string find = $"\n {number} нет в массиве \n";
 
             findArray(newArrayNumber, number); 
 
@@ -90,14 +92,10 @@ namespace ConsoleApp
             {
                 for (int i = 0; i < len; i++) 
                 {
-                    if (inputNumber == arrayNumber[i]) 
+                    if (inputNumber == array[i]) 
                     {
                         find = $"\n {inputNumber} да есть в массиве \n";
                         break;
-                    }
-                    else
-                    {
-                        find = $"\n {inputNumber} нет в массиве \n";
                     }
                 }
                 Console.Write(find);
@@ -110,6 +108,9 @@ namespace ConsoleApp
             [1, 2, 3, 6, 2] -> 0
             [10, 11, 12, 13, 14] -> 5
             */
+            
+            Console.Write("\n _________ \n");
+            Console.Write("Задача 35: \n");
 
             int lenTwo = 123;
             int startTwo = 1;
@@ -135,30 +136,31 @@ namespace ConsoleApp
             [1 2 3 4 5] -> 5 8 3
             [6 7 3 6] -> 12 10
             */
-            int lenThree = 10;
+            
+            Console.Write("\n _________ \n");
+            Console.Write("Задача 37: \n");
+
+            int lenThree = 9;
             int halfLen = lenThree/2;
+            int lastIndex = lenThree - 1;
             int startThree = 1;
             int endThree = 10;
             int[] arrayThree = RandArray(lenThree, startThree, endThree);
-            int[] newArray = new int[lenThree/2];
             
             multiplicationArray (arrayThree);
 
             void multiplicationArray (int[] array)
             {
-                for (int i = 0; i < halfLen; i++) 
-                {
-                    newArray[i] = array[i] * array[lenThree-i-1];
-                }
-
                 Console.WriteLine();
-
                 for (int i = 0; i < halfLen; i++) 
                 {
-                    Console.Write($" {newArray[i]} ");
+                    Console.Write($"{array[i] * array[lastIndex- i]} ");
                 }
+                if (lenThree%2 != 0) Console.Write($"{array[halfLen]} ");
+
             }
             
         }
     }
 }
+
