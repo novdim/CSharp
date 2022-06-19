@@ -61,7 +61,7 @@ namespace ConsoleApp
             {
                 for (int i = 0; i <= len-1; i++) 
                 {
-                    if (arrayNumber[i] < 0)
+                    if (arrayNumber[i] < 0) // не влияет на сумму
                     {
                         arrayNumber[i] = Math.Abs(arrayNumber[i]);
                     }
@@ -76,7 +76,7 @@ namespace ConsoleApp
                     Console.Write($"{arrayNumber[i]} ");   
                 }
             }
-            changeArray(arrayNumber);
+            changeArray(arrayNumber); 
 
 
             /*
@@ -84,8 +84,29 @@ namespace ConsoleApp
             4; массив [6, 7, 19, 345, 3] -> нет
             3; массив [6, 7, 19, 345, 3] -> да
             */
+            Console.Write("\n _________ \n");
+            Console.Write("Задача 33: \n");
 
+            string find = String.Empty;
+            
+            void findArray (int[] array, int inputNumber)
+            {
+                for (int i = 0; i <= len-1; i++) 
+                {
+                    if (arrayNumber[i] == inputNumber) 
+                    {
+                        find = $"{inputNumber} да есть в массиве";
+                    }
+                    else
+                    {
+                        find = $"{inputNumber} нет в массиве";
+                    }
+                }
+                Console.Write(find);
 
+            }
+            int number = Convert.ToInt32(Console.ReadLine());
+            findArray(arrayNumber, number); 
         }
     }
 }
