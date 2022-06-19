@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions; // подключаю "библиотеку" регулярных выражений
 
 namespace ConsoleApp
 {
@@ -22,7 +21,7 @@ namespace ConsoleApp
             int minusNumber = 0;
             int plusNumber = 0;
 
-            int[] randArray (int lenArray, int startRange, int endRange)
+            int[] RandArray (int lenArray, int startRange, int endRange)
             {
                 Random randomA = new Random();
                 int[] array = new int[lenArray];
@@ -35,21 +34,58 @@ namespace ConsoleApp
             }
 
 
-            int[] array = randArray(len, start, end);
+            int[] arrayNumber = RandArray(len, start, end);
                     
-            for (int i = 0; i <= 12-1; i++) 
+            for (int i = 0; i <= len-1; i++) 
             {
-                if (array[i] < 0)
+                if (arrayNumber[i] < 0)
                 {
-                    minusNumber = minusNumber + array[i];
+                    minusNumber = minusNumber + arrayNumber[i];
                 }
                 else
                 {
-                    plusNumber = plusNumber + array[i];
+                    plusNumber = plusNumber + arrayNumber[i];
                 }
             }
 
-            Console.Write($"\n Сумма отрицательных чисел: ({minusNumber}), сумма положительных чисел: {plusNumber}");
+            Console.Write($"\n Сумма отрицательных чисел: ({minusNumber}), сумма положительных чисел: {plusNumber} \n");
+
+            /* Задача 32: Напишите программу замены элементов массива: положительные элементы замените на соответствующие отрицательные, и наоборот.
+            [-4, -8, 8, 2] -> [4, 8, -8, -2]
+            */
+
+            Console.Write("_________ \n");
+            Console.Write("Задача 32: \n");
+
+            void changeArray (int[] array)
+            {
+                for (int i = 0; i <= len-1; i++) 
+                {
+                    if (arrayNumber[i] < 0)
+                    {
+                        arrayNumber[i] = Math.Abs(arrayNumber[i]);
+                    }
+                    else
+                    {
+                        arrayNumber[i] = arrayNumber[i] * (-1);
+                    }
+                }
+
+                for (int i = 0; i <= len-1; i++) 
+                {
+                    Console.Write($"{arrayNumber[i]} ");   
+                }
+            }
+            changeArray(arrayNumber);
+
+
+            /*
+            Задача 33: Задайте массив. Напишите программу, которая определяет, присутствует ли заданное число в массиве.
+            4; массив [6, 7, 19, 345, 3] -> нет
+            3; массив [6, 7, 19, 345, 3] -> да
+            */
+
+
         }
     }
 }
