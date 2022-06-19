@@ -61,14 +61,7 @@ namespace ConsoleApp
             {
                 for (int i = 0; i <= len-1; i++) 
                 {
-                    if (arrayNumber[i] < 0) // не влияет на сумму
-                    {
-                        arrayNumber[i] = Math.Abs(arrayNumber[i]);
-                    }
-                    else
-                    {
-                        arrayNumber[i] = arrayNumber[i] * (-1);
-                    }
+                    arrayNumber[i] = arrayNumber[i] * (-1);
                 }
 
                 for (int i = 0; i <= len-1; i++) 
@@ -88,25 +81,42 @@ namespace ConsoleApp
             Console.Write("Задача 33: \n");
 
             string find = String.Empty;
-            
+            int number = Convert.ToInt32(Console.ReadLine());
+            int[] newArrayNumber = RandArray(len, start, end);
+
+            findArray(newArrayNumber, number); 
+
             void findArray (int[] array, int inputNumber)
             {
-                for (int i = 0; i <= len-1; i++) 
+                for (int i = 0; i < len; i++) 
                 {
-                    if (arrayNumber[i] == inputNumber) 
+                    if (inputNumber == arrayNumber[i]) 
                     {
-                        find = $"{inputNumber} да есть в массиве";
+                        find = $"\n {inputNumber} да есть в массиве";
+                        break;
                     }
                     else
                     {
-                        find = $"{inputNumber} нет в массиве";
+                        find = $"\n {inputNumber} нет в массиве";
                     }
                 }
                 Console.Write(find);
-
             }
-            int number = Convert.ToInt32(Console.ReadLine());
-            findArray(arrayNumber, number); 
+
+            /*
+            Задача 35: Задайте одномерный массив из 123 случайных чисел. Найдите количество элементов массива, значения которых лежат в отрезке [10,99]. 
+            Пример для массива из 5, а не 123 элементов. В своём решении сделайте для 123
+            [5, 18, 123, 6, 2] -> 1
+            [1, 2, 3, 6, 2] -> 0
+            [10, 11, 12, 13, 14] -> 5
+            */
+
+            /*
+            Задача 37: Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д. Результат запишите в новом массиве.
+            [1 2 3 4 5] -> 5 8 3
+            [6 7 3 6] -> 12 10
+            */
+
         }
     }
 }
