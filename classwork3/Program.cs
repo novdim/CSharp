@@ -127,17 +127,38 @@ namespace ConsoleApp
                         countElements = 1 + countElements;
                     }
                 }
-                Console.Write($"\n {countElements} элементов лежат в отрезке [10,99]");
+                Console.Write($"\n {countElements} элементов лежат в отрезке [10,99] \n");
             }
-
-
 
             /*
             Задача 37: Найдите произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д. Результат запишите в новом массиве.
             [1 2 3 4 5] -> 5 8 3
             [6 7 3 6] -> 12 10
             */
+            int lenThree = 10;
+            int halfLen = lenThree/2;
+            int startThree = 1;
+            int endThree = 10;
+            int[] arrayThree = RandArray(lenThree, startThree, endThree);
+            int[] newArray = new int[lenThree/2];
+            
+            multiplicationArray (arrayThree);
 
+            void multiplicationArray (int[] array)
+            {
+                for (int i = 0; i < halfLen; i++) 
+                {
+                    newArray[i] = array[i] * array[lenThree-i-1];
+                }
+
+                Console.WriteLine();
+
+                for (int i = 0; i < halfLen; i++) 
+                {
+                    Console.Write($" {newArray[i]} ");
+                }
+            }
+            
         }
     }
 }
