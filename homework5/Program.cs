@@ -59,13 +59,14 @@ namespace ConsoleApp
         Console.Write($"\n__________\n");
         Console.Write($"Задача 36: \n");
 
-        int lenArray2 = 5;
+        int lenArray2 = 7;
         int startRange2  = 1;
         int endRange2 = 100;
 
         int[] arrayTwo = RandArray(lenArray2, startRange2, endRange2); // метод RandArray ранее использовался в задаче 34 с другими входными параметрами
         PrintArray(arrayTwo);
         SumNonEvenNumbers(arrayTwo);
+        SumNumbersForNonEvenPositionInArray(arrayTwo);
 
         void SumNonEvenNumbers (int[] array)
         {
@@ -75,6 +76,19 @@ namespace ConsoleApp
                 if (array[i]%2 != 0) sum += array[i];
             }
             Console.Write($"\n Сумма не четных чисел в массиве - {sum}. \n");
+
+        }
+
+        void SumNumbersForNonEvenPositionInArray (int[] array) // метод расчета суммы чисел массива находящихся на не четных позициях (с учетом того что позиции массива начинаются с 0)
+        {
+            int sum = 0;
+            int i = 1;
+            while (i < array.Length) 
+            {
+                sum += array[i];
+                i += 2;
+            }
+            Console.Write($"\n Сумма чисел на нечетных позициях в массиве - {sum}. \n");
         }
     
         // Задача 38: Задайте массив вещественных чисел. 
