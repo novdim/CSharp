@@ -45,7 +45,6 @@ namespace ConsoleApp
 
             void PrintArray(int[] array) // метод печати массива
             {
-                int lastSymbol = array.Length - 1;
                 for (int i = 0; i < array.Length; i++) 
                 {
                     Console.Write($"{array[i]}, ");
@@ -83,19 +82,25 @@ namespace ConsoleApp
 
         Console.Write($"\n__________\n");
         Console.Write($"Задача 38: \n");
-        
-        int lenArray3 = 5;
-        int startRange3  = 1;
-        int endRange3 = 100;
-        int[] arrayThree = RandArray(lenArray3, startRange3, endRange3);
 
-        PrintArray(arrayThree);
-        DifferenceMaxMinNumberInArray(arrayThree);
         
+        double[] arrayThree = {3, 7, -2.2, 2, 78};
 
-        void DifferenceMaxMinNumberInArray(int[] array)
+        PrintArray_double(arrayThree);
+        DifferenceMaxMinNumberInArray(arrayThree);    
+
+        void PrintArray_double(double[] array) // метод печати массива
         {
-            int min, max;
+            for (int i = 0; i < array.Length; i++) 
+            {
+                Console.Write($"{array[i]}, ");
+            }
+            Console.Write("\b \b\b \b"); // удаляем последнюю запятую и пробел массива 
+        }
+
+        void DifferenceMaxMinNumberInArray(double[] array)
+        {
+            double min, max;
 
             if (array[0] > array[1])
             {
@@ -119,7 +124,7 @@ namespace ConsoleApp
                     min = array[i];
                 }
             }
-            Console.Write($"\n Разница максимального и минимального элемента: {max} - {min} = {max-min}");
+            Console.Write($"\n Разница максимального и минимального элемента: {max} - ({min}) = {max-min}");
 
         }
 
