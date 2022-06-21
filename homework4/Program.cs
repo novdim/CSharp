@@ -134,6 +134,49 @@ namespace ConsoleApp
                 Console.Write("\b \b\b \b"); // удаляем последнюю запятую и пробел массива 
             }
 
+            // Семинар 4. Дополнительные задачи.
+
+            // Задача 1. На вход подаётся натуральное десятичное число. 
+            // Проверьте, является ли оно палиндромом в двоичной записи.
+
+            Console.Write($"\n__________\n");
+            Console.Write($"Доп. Задача 1: \n");
+            
+            Console.Write($"Введите число:");
+            int originalNamber = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write($"Введенное число {originalNamber} в двоичной системе: {DecimalToBinary(originalNamber)} {PalindromeCheck(DecimalToBinary(originalNamber))}");
+
+            string DecimalToBinary(int number) // метод перевода из 10 в 2 с выводом результата в виде строки
+            {
+                return Convert.ToString(number, 2);
+            }
+
+            
+            string PalindromeCheck (string number) // метод проверки палиндромома
+            {
+                char[] chars = number.ToCharArray(); // извлекаем символы из строки в массив
+
+                Array.Reverse(chars); // переворачиваем массив используя встроенный метод Reverse
+                string newText = new string(chars); // присваиваем newText перевернутый массив
+                
+                if (newText == number) // сравниваем строки
+                {
+                    return $"палиндромом \n";
+                }
+                else
+                {
+                    return $"не палиндромом \n";
+                }          
+            }
+
+            // Задача 2. Напишите метод, который заполняет массив случайным количеством (от 1 до 100) нулей и единиц. 
+            // Размер массива должен совпадать с квадратом количества единиц в нём.
+
+            // Задача 3. Массив на 100 элементов задаётся случайными числами от 1 до 99. 
+            // Определите самый часто встречающийся элемент в массиве. Если таких элементов несколько, вывести их все.
+
+
         }
     }
 }
