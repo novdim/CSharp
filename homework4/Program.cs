@@ -228,12 +228,12 @@ namespace ConsoleApp
             
             void FrequentItemsInRandArray (int[] array)
             {
-                int count = 0;
+                int count = 1;
                 int max = 1;
 
                 for (int i = 0; i < array.Length; i++) 
                 {
-                    count = 0;
+                    count = 1;
                     for(int j = i + 1; j < array.Length; j++)
                     {
                         if (array[i] == array[j]) 
@@ -244,12 +244,11 @@ namespace ConsoleApp
                     if (count > max) 
                     {
                         max = count;
-                    }                    
+                    }                
                 }
-
                 for (int i = 0; i < array.Length; i++) 
                 {
-                    count = 0;
+                    count = 1;
                     for(int j = i + 1; j < array.Length; j++)
                     {
                         if (array[i] == array[j]) 
