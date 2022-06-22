@@ -208,12 +208,63 @@ namespace ConsoleApp
                 return array;
             }
 
-  
-
             // Задача 3. Массив на 100 элементов задаётся случайными числами от 1 до 99. 
             // Определите самый часто встречающийся элемент в массиве. Если таких элементов несколько, вывести их все.
+        
+           Console.Write($"\n__________\n");
+            Console.Write($"Доп. Задача 3: \n");
+            
+            int lenArray3 = 100;
+            int startRange3  = 1;
+            int endRange3 = 100;
 
+            for(int i = 0; i < 10; i++)
+            {
+                int[] newArray = RandArray(lenArray3, startRange3, endRange3);
+                PrintArray(newArray);
+                Console.WriteLine();
+                FrequentItemsInRandArray(newArray);
+            }
+            
+            void FrequentItemsInRandArray (int[] array)
+            {
+                int count = 0;
+                int max = 1;
 
+                for (int i = 0; i < array.Length; i++) 
+                {
+                    count = 0;
+                    for(int j = i + 1; j < array.Length; j++)
+                    {
+                        if (array[i] == array[j]) 
+                        {
+                            count++;
+                        }
+                    }
+                    if (count > max) 
+                    {
+                        max = count;
+                    }                    
+                }
+
+                for (int i = 0; i < array.Length; i++) 
+                {
+                    count = 0;
+                    for(int j = i + 1; j < array.Length; j++)
+                    {
+                        if (array[i] == array[j]) 
+                        {
+                            count++;
+                        }
+                    }
+                    if (count == max) 
+                    {
+                        Console.Write($"{array[i]} - {max} раз(а). \n");
+                    }                    
+                }
+
+            }
+            
         }
     }
 }
