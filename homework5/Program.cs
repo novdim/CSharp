@@ -164,9 +164,9 @@ namespace ConsoleApp
             Console.Write("\n Введите натуральное число: \n");
 
             string input =  Console.ReadLine();
-            searchSequence(newArray1, input);
+            SearchSequence(newArray1, input);
 
-            void searchSequence (int[] array, string number)
+            void SearchSequence (int[] array, string number)
             {
                 while(true)
                 {
@@ -213,12 +213,52 @@ namespace ConsoleApp
                 
             }
             
-
-
         // Задача 2. На вход подаются два числа случайной длины. Найдите произведение каждого разряда первого числа на каждый разряд второго. Ответ запишите в массив.
-
         // 24, 132 -> {2, 6, 4, 4, 12, 8}
 
+        Console.Write($"\n__________\n");
+        Console.Write($"Доп. Задача 2: \n");
+
+        Console.Write("\n Введите натуральное число: \n");
+        int[] numberArray1 = NumberInArray(Console.ReadLine());
+        Console.Write("\n Введите натуральное число: \n");
+        int[] numberArray2 = NumberInArray(Console.ReadLine());
+
+        
+        PrintArray(ProductEachDigitFirstSecondNumbers (numberArray1, numberArray2));
+
+        int[] NumberInArray (string number)
+        {
+            int naturalNumber = Convert.ToInt32(number);
+            int sizeArray = number.Length;
+            int[] numberArray = new int[sizeArray];
+            int i = numberArray.Length - 1;
+            while (naturalNumber > 0) // пока введеное число > 0 
+            {
+                numberArray[i] = naturalNumber % 10; // берем остаток деления на 10 и складываем в массив с конца
+                naturalNumber /= 10; // делим число на 10 до тех пор пока делится на 10 (с каждой итерацией будет убираться последний символ) naturalNumber = naturalNumber / 10
+                i--;
+            }
+            return numberArray;
+        }
+
+        int[] ProductEachDigitFirstSecondNumbers(int[] numberArray1, int[] numberArray2)
+        {
+            int[] lastArray = new int[numberArray1.Length*numberArray2.Length];
+            int k = 0;
+            while (k < lastArray.Length-1)
+            {
+                for (int i = 0; i < numberArray1.Length; i++)
+                {
+                    for (int j = 0; j < numberArray2.Length; j++)
+                    {
+                        lastArray[k] = numberArray1[i]*numberArray2[j];
+                        k++;
+                    }
+                }
+            }
+            return lastArray;
+        }
 
         // Задача 3. Найдите все числа от 1 до 1000000, сумма цифр которых в три раза меньше их произведений. Подсчитайте их количество.
 
