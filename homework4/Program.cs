@@ -193,14 +193,8 @@ namespace ConsoleApp
                     array[i] = randomA.Next(0,2);
                     sum += array[i];
                     countElements++;
-                    if (sum*sum == countElements) // если квадрат сложенных 1 равен полученной длинне в аккумуляторе countElements останавливаем наполнение массива
-                    {
-                        break;
-                    }
-                    if (sum > 10) // если сумма единиц больше 10, то оставшуся часть массива заполняем 0, так как квадрат от 11 больше 100 
-                    {
-                        array[i] = 0;
-                    }
+                    if (sum*sum == countElements) break; // если квадрат сложенных 1 равен полученной длинне в аккумуляторе countElements останавливаем наполнение массива
+                    if (sum > 10) array[i] = 0;// если сумма единиц больше 10, то оставшуся часть массива заполняем 0, так как квадрат от 11 больше 100 
                 }
 
                 Array.Resize(ref array, countElements); // изменяем длину массива с 100 на полученну в аккумуляторе countElements
@@ -211,7 +205,7 @@ namespace ConsoleApp
             // Задача 3. Массив на 100 элементов задаётся случайными числами от 1 до 99. 
             // Определите самый часто встречающийся элемент в массиве. Если таких элементов несколько, вывести их все.
         
-           Console.Write($"\n__________\n");
+            Console.Write($"\n__________\n");
             Console.Write($"Доп. Задача 3: \n");
             
             int lenArray3 = 100;
@@ -226,40 +220,35 @@ namespace ConsoleApp
                 FrequentItemsInRandArray(newArray);
             }
             
-            void FrequentItemsInRandArray (int[] array)
+            void FrequentItemsInRandArray (int[] array) // метод поиска максимального повторения в массиве и дальнейшем выводе всех элевентов с полученной частотой
             {
-                int count = 1;
-                int max = 1;
+                int count = 0;
+                int maxRepetitions  = 0; 
+                int[] newArr = new int [100];
 
-                for (int i = 0; i < array.Length; i++) 
+                for(int k = 0; k < newArr.Length; k++)
                 {
-                    count = 1;
-                    for(int j = i + 1; j < array.Length; j++)
+                    for (int i = 0; i < array.Length; i++) 
                     {
-                        if (array[i] == array[j]) 
+                        count = 1;
+                        for(int j = i + 1; j < array.Length; j++)
                         {
-                            count++;
+                            if (array[i] == array[j]) count++;
                         }
+                        if (count <= maxRepetitions) continue; // если count меньше или равно maxRepetitions начинаеv новую итерацию ближайшего внешнего цикла от continue
+                        maxRepetitions = count; // складываем в maxRepetitions максимальное количество повторений в массиве                                 
                     }
-                    if (count > max) 
-                    {
-                        max = count;
-                    }                
                 }
+
+                // повторяем предыдущий цикл только теперь выводим элементы с полученным ранее максимальным значением
                 for (int i = 0; i < array.Length; i++) 
                 {
                     count = 1;
                     for(int j = i + 1; j < array.Length; j++)
                     {
-                        if (array[i] == array[j]) 
-                        {
-                            count++;
-                        }
+                        if (array[i] == array[j]) count++;
                     }
-                    if (count == max) 
-                    {
-                        Console.Write($"{array[i]} - {max} раз(а). \n");
-                    }                    
+                    if (count == maxRepetitions) Console.Write($"{array[i]} - {maxRepetitions} раз(а). \n");                   
                 }
 
             }
