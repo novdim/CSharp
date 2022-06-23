@@ -164,42 +164,53 @@ namespace ConsoleApp
             Console.Write("\n Введите натуральное число: \n");
 
             string input =  Console.ReadLine();
-        
-            int inputLength = input.Length;
-            int naturalNumber = Convert.ToInt32(input);
-            
-            searchSequence(newArray1, naturalNumber);
+            searchSequence(newArray1, input);
 
-            void searchSequence (int[] array, int number)
+            void searchSequence (int[] array, string number)
             {
-                int[] numberArray = new int[inputLength];
-                int i = numberArray.Length - 1;
-                while (number > 0) // пока введеное число > 0 
+                while(true)
                 {
-                    numberArray[i] = number % 10; // берем остаток деления на 10 и складываем в массив с конца
-                    number /= 10; // делим число на 10 до тех пор пока делится на 10 (с каждой итерацией будет убираться последний символ) number = number / 10
-                    i--;
-                }
-
-                int j = 0;
-
-                for (int b = 0; b < array.Length; b++)
-                {
-                    if (array[b] == numberArray[0]) //найдено первое совпадение
+                    int inputLength = number.Length;
+                    if (inputLength < 3) 
                     {
-                        j = 0;
-                        while (b + j < array.Length && array[b+j] == numberArray[j])
-                        {
-                            j++;
-                            if (j == numberArray.Length)
-                            {
-                                Console.Write($"{input} - Да. В этом массиве есть такая последовательность. \n"); 
-                                return;
-                            }
-                        }
+                        Console.Write("\n Введите натуральное число состоящее из 3 и более цифр: \n");
+                        number = Console.ReadLine();
                     }
-                    if (b == array.Length-1) Console.Write($"{input} - Нет. В этом массиве нет такой последовательности. \n");
+                    else
+                    {
+                        int naturalNumber = Convert.ToInt32(number);
+                        int[] numberArray = new int[inputLength];
+                        int i = numberArray.Length - 1;
+                        while (naturalNumber > 0) // пока введеное число > 0 
+                        {
+                            numberArray[i] = naturalNumber % 10; // берем остаток деления на 10 и складываем в массив с конца
+                            naturalNumber /= 10; // делим число на 10 до тех пор пока делится на 10 (с каждой итерацией будет убираться последний символ) naturalNumber = naturalNumber / 10
+                            i--;
+                        }
+
+                        int j = 0;
+
+                        for (int b = 0; b < array.Length; b++)
+                        {
+                            if (array[b] == numberArray[0]) //найдено первое совпадение
+                            {
+                                j = 0;
+                                while (b + j < array.Length && array[b+j] == numberArray[j])
+                                {
+                                    j++;
+                                    if (j == numberArray.Length)
+                                    {
+                                        Console.Write($"{number} - Да. В этом массиве есть такая последовательность. \n"); 
+                                        return;
+                                    }
+                                }
+                            }
+                            if (b == array.Length-1) Console.Write($"{number} - Нет. В этом массиве нет такой последовательности. \n");
+                        }
+                        break;
+                    }
                 }
+                
             }
             
 
