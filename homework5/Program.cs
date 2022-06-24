@@ -246,7 +246,7 @@ namespace ConsoleApp
         {
             int[] lastArray = new int[numberArray1.Length*numberArray2.Length];
             int k = 0;
-            while (k < lastArray.Length-1)
+            while (k < lastArray.Length)
             {
                 for (int i = 0; i < numberArray1.Length; i++)
                 {
