@@ -312,6 +312,8 @@ namespace ConsoleApp
         int lenArray3 = 3;
         int startRange3  = 1;
         int endRange3 = 10;
+        
+        // Рандомные массивы которые складываем в 1 общий
 
         int[] newArr1 = RandArray(lenArray3, startRange3, endRange3);
         int[] newArr2 = RandArray(lenArray3, startRange3, endRange3);
@@ -319,13 +321,16 @@ namespace ConsoleApp
         int[] newArr4 = RandArray(lenArray3, startRange3, endRange3);
         int[] newArr5 = RandArray(lenArray3, startRange3, endRange3);
 
-        // int[] newArr1 = {1, 2, 3};
+
+        // Для ручного ввода массивов
+
+        // int[] newArr1 = {1, 2, 4};
         // int[] newArr2 = {1, 2, 3};
-        // int[] newArr3 = {4, 5, 6};
-        // int[] newArr4 = {7, 8, 9};
-        // int[] newArr5 = {9, 8, 7};
+        // int[] newArr3 = {1, 2, 3};
+        // int[] newArr4 = {1, 2, 3};
+        // int[] newArr5 = {1, 2, 4};
 
-
+        // вывод на экран массивов чтоб быстро проверить в Exel =)
         PrintArray(newArr1);
         Console.WriteLine();
         PrintArray(newArr2);
@@ -336,28 +341,28 @@ namespace ConsoleApp
         Console.WriteLine();
         PrintArray(newArr5);
 
-        int[][] arrayArr = {newArr1,newArr2,newArr3,newArr4,newArr5};
+        int[][] arrayArr = {newArr1,newArr2,newArr3,newArr4,newArr5}; // массив массивов
         
 
         SearchArrayWithLargestSumInArray (arrayArr, lenArray3);
-        
-        void SearchArrayWithLargestSumInArray(int [][] array, int lenArrayInArray)
-        {
-            int sum = 0;
-            int maxArray = 0;
-            int idArray = 0;
 
+        // метод поиска сумм массивов в массиве и определение максимального с наименьшим id
+        void SearchArrayWithLargestSumInArray(int [][] array, int lenArrayInArray) 
+        {
+            int sum = 0;                                                                    // аккумулятор cумм массивов
+            int maxArray = 0;                                                               // переменная для максимального массива
+            int idArray = 0;                                                                // переменная для id максимального массива
 
             for(int i = 0; i < array.Length; i++)
             {
-                sum = 0;
+                sum = 0;                                                                    // обнуляем аккумулятор
                 for (int j = 0; j < lenArrayInArray; j++)
                 {
                     sum += array[i][j];
                 }
-                if(sum <= maxArray) continue;
-                maxArray = sum;
-                idArray = i;
+                if(sum <= maxArray) continue;                                               //если sum меньше или равно maxArray начинаем новую итерацию ближайшего внешнего цикла
+                maxArray = sum;                                                             // складываем максимальную сумму в maxArray
+                idArray = i;                                                                // складываем id максимального массива
             }
             Console.Write($"\n Массив с наибольшей суммой {maxArray} и наименьшим id {idArray} \n");
         }
