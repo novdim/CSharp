@@ -161,7 +161,7 @@ namespace ConsoleApp
             int[] newArray1 = RandArray(lenArray1, startRange1, endRange1);
             PrintArray(newArray1);
 
-            Console.Write("\n Введите натуральное число: \n");
+            Console.Write("\n Введите натуральное число состоящее из 3 и более цифр: \n");
 
             string input =  Console.ReadLine();
             SearchSequence(newArray1, input);
@@ -227,10 +227,10 @@ namespace ConsoleApp
         
         PrintArray(ProductEachDigitFirstSecondNumbers (numberArray1, numberArray2));
 
-        int[] NumberInArray (string number)
+        int[] NumberInArray (string number) // метод перевода числа в массив
         {
             int naturalNumber = Convert.ToInt32(number);
-            int sizeArray = number.Length;
+            int sizeArray = number.Length; 
             int[] numberArray = new int[sizeArray];
             int i = numberArray.Length - 1;
             while (naturalNumber > 0) // пока введеное число > 0 
@@ -261,7 +261,46 @@ namespace ConsoleApp
         }
 
         // Задача 3. Найдите все числа от 1 до 1000000, сумма цифр которых в три раза меньше их произведений. Подсчитайте их количество.
+        
+        Console.Write($"\n__________\n");
+        Console.Write($"Доп. Задача 3: \n");
 
+
+        string lastNumber = Console.ReadLine();
+
+        CountSumMultiplicationDigitsNumber(lastNumber);
+
+        // Метод расчета суммы и умножения цифр чисел от 1 до введенного значения. 
+        // И определения количества числел сумма цифр которых в три раза меньше их произведений.
+
+        void CountSumMultiplicationDigitsNumber(string number) 
+        {
+            int numberInt = Convert.ToInt32(number);
+            int j = 0;
+            int sum = 0;                                    // аккумулятор суммирования цифр числа
+            double multiplicate = 1;                        // аккумулятор умножения цифр числа (берем тип double, так как в дальнейшем будем делить на 3) 
+            int digit = 0;                                  // переменная в которую будем складывать цифру числа
+            int count = 0;                                  // аккумулятор в котором будет храниться количетво чисел которые будут удволетворять требованиям
+            for (int i = 1; i < numberInt; i++)
+            {
+                j += i;                                     // переходим от одного числа до другого
+                sum = 0;                                    // обнуляем аккумулятор
+                multiplicate = 1;                           // обнуляем аккумулятор
+                while (j > 0)
+                {
+                    digit = j%10;
+                    sum += digit;                            // берем остаток деления на 10 и складываем в аккумулятор sum = sum + digit % 10
+                    multiplicate *= digit;                   // берем остаток деления на 10 и складываем в аккумулятор multiplicate = multiplicate * multiplicate % 10
+                    j /= 10;                                 // делим число на 10 до тех пор пока делится на 10 (с каждой итерацией будет убираться последний символ)
+                }
+                if (sum < multiplicate/3)                    // условия рачета
+                {
+                    count++;
+                }
+            }
+            Console.Write(count);
+
+        }
 
         // Задача 1*. Дан массив массивов, состоящих из натуральных чисел, размер которого 5. 
         // Для каждого элемента-массива определить найти сумму его элементов и вывести массив с наибольшей суммой. 
