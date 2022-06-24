@@ -306,6 +306,62 @@ namespace ConsoleApp
         // Для каждого элемента-массива определить найти сумму его элементов и вывести массив с наибольшей суммой. 
         // Если таких массивов несколько, вывести массив с наименьшим индексом.
 
+        Console.Write($"\n__________\n");
+        Console.Write($"Доп. Задача 1*: \n");
+
+        int lenArray3 = 3;
+        int startRange3  = 1;
+        int endRange3 = 10;
+
+        int[] newArr1 = RandArray(lenArray3, startRange3, endRange3);
+        int[] newArr2 = RandArray(lenArray3, startRange3, endRange3);
+        int[] newArr3 = RandArray(lenArray3, startRange3, endRange3);
+        int[] newArr4 = RandArray(lenArray3, startRange3, endRange3);
+        int[] newArr5 = RandArray(lenArray3, startRange3, endRange3);
+
+        // int[] newArr1 = {1, 2, 3};
+        // int[] newArr2 = {1, 2, 3};
+        // int[] newArr3 = {4, 5, 6};
+        // int[] newArr4 = {7, 8, 9};
+        // int[] newArr5 = {9, 8, 7};
+
+
+        PrintArray(newArr1);
+        Console.WriteLine();
+        PrintArray(newArr2);
+        Console.WriteLine();
+        PrintArray(newArr3);
+        Console.WriteLine();
+        PrintArray(newArr4);
+        Console.WriteLine();
+        PrintArray(newArr5);
+
+        int[][] arrayArr = {newArr1,newArr2,newArr3,newArr4,newArr5};
+        
+
+        SearchArrayWithLargestSumInArray (arrayArr, lenArray3);
+        
+        void SearchArrayWithLargestSumInArray(int [][] array, int lenArrayInArray)
+        {
+            int sum = 0;
+            int maxArray = 0;
+            int idArray = 0;
+
+
+            for(int i = 0; i < array.Length; i++)
+            {
+                sum = 0;
+                for (int j = 0; j < lenArrayInArray; j++)
+                {
+                    sum += array[i][j];
+                }
+                if(sum <= maxArray) continue;
+                maxArray = sum;
+                idArray = i;
+            }
+            Console.Write($"\n Массив с наибольшей суммой {maxArray} и наименьшим id {idArray} \n");
+        }
+
         }
     }
 }
