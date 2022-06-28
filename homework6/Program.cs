@@ -10,27 +10,44 @@ namespace ConsoleApp
             // Задача 41: Пользователь вводит с клавиатуры M чисел. 
             // Посчитайте, сколько чисел больше 0 ввёл пользователь.
 
-            Console.WriteLine($"__________");
-            Console.WriteLine($"Задача 41:");
+            // Console.WriteLine($"__________");
+            // Console.WriteLine($"Задача 41:");
 
-            Console.WriteLine("Введите число");
-            int quantity_number = 3;
-            CountingNumbersMoreZero(quantity_number);
+            // Console.WriteLine("Введите число");
+            // int quantity_number = 3;
+            // CountingNumbersMoreZero(quantity_number);
 
 
-            Console.WriteLine($"(версия 2):");
-            Console.WriteLine("Введите несколько чисел. Чтобы остановить ввод чисел введите q");
-            CountingNumbersMoreZeroVersion2();
+            // Console.WriteLine($"(версия 2):");
+            // Console.WriteLine("Введите несколько чисел. Чтобы остановить ввод чисел введите q");
+            // CountingNumbersMoreZeroVersion2();
             
             // Задача 43. Напишите программу, которая найдёт точку пересечения двух прямых, 
             // заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
             
-            Console.WriteLine($"__________");
-            Console.WriteLine($"Задача 43:");
+            // Console.WriteLine($"__________");
+            // Console.WriteLine($"Задача 43:");
 
-            SearchPointIntersectionLines();
+            // SearchPointIntersectionLines();
 
             
+
+            // Задача 1. Написать перевод десятичного числа в двоичное, используя рекурсию.
+           
+           
+            // Console.WriteLine($"__________");
+            // Console.WriteLine($"Доп. Задача 1:");
+            // Console.WriteLine("Введите число:");
+            // int input_number = Convert.ToInt32(Console.ReadLine());
+            
+            // Console.WriteLine($"Введенное число {input_number} в двоичной системе счисления {DecimalToBinaryNumber(input_number)} ");
+
+
+            string proverb = "Без труда не выловишь и рыбку из пруда";
+            Console.WriteLine($"В тексте \"{proverb}\" \n {CalculationVowelLetters(proverb,0)} - гласных.");
+            Console.WriteLine($"Версия без рекурсии.");
+            CalculationVowelLettersVersionWithoutRecursion(proverb);
+
             // Методы
             
 
@@ -98,18 +115,50 @@ namespace ConsoleApp
 
             }
 
-            // Задача 1. Написать перевод десятичного числа в двоичное, используя рекурсию.
-
-            Console.WriteLine("Введите число:");
-            int input_number = Convert.ToInt32(Console.ReadLine());
-            
-            Console.WriteLine($"Введенное число {input_number} в двоичной системе счисления {DecimalToBinaryNumber(input_number)} ");
+            // ________________ Методы для доп. задач ______________
 
             string DecimalToBinaryNumber(int number)
             {
                 if(number == 0) return "";
                 else return DecimalToBinaryNumber(number / 2) + (number % 2).ToString();
             }
+
+            
+            int CalculationVowelLetters(string text, int count)
+            {
+                string str = "аоэеиыуёюяАОЭЕИЫУЁЮЯ";
+                int index = str.IndexOf(text[count]);
+                if (index < 0) 
+                {
+                    if (count < text.Length - 1) return CalculationVowelLetters(text, count+1);
+                    else return 0;
+                }
+                else
+                {
+                    if (count < text.Length - 1) return CalculationVowelLetters(text, count+1) + 1;
+                    else return 1; 
+                }
+                // краткий вариант вывода
+                // return (index < 0 ? 0 : 1) + (count < text.Length - 1 ? CalculationVowelLetters(text, count + 1) : 0);
+            }
+
+
+            void CalculationVowelLettersVersionWithoutRecursion(string text)
+            {
+                char[] vowels = new char[20] { 'а', 'о', 'и', 'е','ё','э','ы','у','ю','я','А','О','И','Е','Ё','Э','Ы','У','Ю','Я'};
+                int count_vowels = 0;
+                for(int i = 0; i < text.Length; i++)
+                {
+                    for(int j = 0; j < vowels.Length; j++)
+                    {
+                        if (text[i] == vowels[j]) count_vowels++;
+                    }
+                }
+                Console.WriteLine($"В тексте: \"{text}\" \n {count_vowels} - гласных.");
+            }
+
+
+
             
         }
     }
