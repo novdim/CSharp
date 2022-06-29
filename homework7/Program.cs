@@ -74,18 +74,30 @@ namespace ConsoleApp
             Console.WriteLine($" \n__________");
             Console.WriteLine($"Доп. Задача 1:");
 
+            // можно снять с коммента цикл for для того чтобы умножить сразу несколько матриц, 
+            // так как столбцы и строки задаются рандомом от 3 до 4, 
+            // не всегда возможно перемножение матриц(массивов).
+             
 
-
-            int[,] array_1 = RandArray(5, 5, -9, 10);
-            int[,] array_2 = RandArray(5, 5, -9, 10);
-            Console.WriteLine($"____1____");
-            PrintArray(array_1);
-            Console.WriteLine($"____2____");
-            PrintArray(array_2);
-            Console.WriteLine($"____Итог_____");
-            MatrixMultiplication(array_1, array_2);
-
+            // for(int i = 0; i < 10; i++)  
+            // {
+                int[,] array_1 = RandArray(5, 5, -9, 10);
+                int[,] array_2 = RandArray(5, 5, -9, 10);
+                Console.WriteLine($"____1____");
+                PrintArray(array_1);
+                Console.WriteLine($"____2____");
+                PrintArray(array_2);
+                Console.WriteLine($"____Итог_____");
+                MatrixMultiplication(array_1, array_2);
+            // }
             
+            Console.WriteLine($" \n__________");
+            Console.WriteLine($"Доп. Задача 2:");
+
+            int[,] array_3 = SeparateRandArray(3, 4, 100, 10000);
+            PrintArray(array_3);
+
+            SelectionNumbersInArray(array_3);
 
             // Методы
 
@@ -148,6 +160,15 @@ namespace ConsoleApp
                 }
             }
 
+            
+            void PrintArrayOnedimensional(int[] currentArray)                                            
+            {
+                for (int i = 0; i < currentArray.Length; i++)
+                {
+                    Console.Write($"{currentArray[i]} ");
+                }
+            }
+
             void OutputElementByPosition (double[,] currentArray, int row_id, int column_id) // метод вывода элента по позиции (номер строки и столбца)
             {
                 int quantity_row = currentArray.GetLength(0);
@@ -155,7 +176,7 @@ namespace ConsoleApp
                 
                 if (row_id > quantity_row || column_id > quantity_column || row_id < 0 || column_id < 0) 
                     Console.WriteLine("Элемента с такой позицией нет");
-                else Console.WriteLine(currentArray[row_id, column_id]);
+                else Console.WriteLine($"Элемент с позицией ({row_id}, {column_id}): {currentArray[row_id, column_id]}");
             }
 
             void ArithmeticMeanColumn(int [,] currentArray)                                 // метод среднего арифметического элементов столбца
@@ -208,6 +229,65 @@ namespace ConsoleApp
                 }      
             }
 
+
+            int[,] SeparateRandArray(int rows, int columns, int start, int end)             
+            {
+                Random random = new Random();
+                int[,] array = new int[rows, columns];
+
+                for(int i = 0; i < array.GetLength(0); i++)
+                {
+                    for (int j = 0; j < array.GetLength(1); j++)
+                    {
+                        array[i, j] = random.Next(start, end);
+                    }                    
+                }
+                return array;
+            }
+
+            void SelectionNumbersInArray (int[,] array)             
+            {
+                int[] new_array = new int[array.Length];
+                int k = 0;
+
+                for(int i = 0; i < array.GetLength(0); i++)
+                {
+                    for (int j = 0; j < array.GetLength(1); j++)
+                    {
+                        //Console.WriteLine(SumDigitsNumberMoreMultiplications(array[i, j]));
+                        if (SumDigitsNumberMoreMultiplications(array[i, j]) != 0) 
+                        {
+                            new_array[k] = array[i, j];
+                            k++;
+                        }
+                    }                    
+                }
+                Array.Resize(ref new_array, k); // изменяем длину массива
+                if (k > 0) PrintArrayOnedimensional(new_array);
+                else Console.WriteLine("В полученном массиве нет чисел сумма которых больше их произведений");
+
+                
+            }
+
+            int SumDigitsNumberMoreMultiplications (int number) 
+            {
+                int digit = 0;               
+                int sum = 0;      
+                int multiplicate = 1;
+                int last_number = number;
+                while (number > 0)
+                {
+                    digit = number%10;
+                    sum += digit;         
+                    multiplicate *= digit;
+                    number /= 10;              
+                }
+                //Console.WriteLine(sum);
+                //Console.WriteLine(multiplicate);
+                if (sum > multiplicate) return last_number;
+                else return 0;
+            }
+            
         }
     }
 }
