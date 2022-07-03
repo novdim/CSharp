@@ -7,6 +7,9 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
 
+            Console.WriteLine($"__________");
+            Console.WriteLine($"Задача :");
+
             int[,] array_1 = RandArray(5, 5, -9, 10);
             int[,] array_2 = RandArray(5, 5, -9, 10);
             Console.WriteLine($"____1____");
@@ -15,7 +18,74 @@ namespace ConsoleApp
             PrintArray(array_2);
             Console.WriteLine($"____Итог_____");
             MatrixMultiplication(array_1, array_2);
+
+            //Задача 63: Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от 1 до N.
+
+            Console.WriteLine($"__________");
+            Console.WriteLine($"Задача 63:");
+
+            Console.WriteLine($"Введите число");
+            int number = Convert.ToInt32(Console.ReadLine());
+            PrintNumbersRecursion(number);
+
+
+            // Задача 65: Задайте значения M и N. Напишите программу, которая выведет все натуральные числа в промежутке от M до N.
+
+
+            Console.WriteLine($"\n__________");
+            Console.WriteLine($"Задача 65:");
+
+            Console.WriteLine($"Введите число M");
+            int numberM = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"Введите число N");
+            int numberN = Convert.ToInt32(Console.ReadLine());
+
+            Recursion(numberM, numberN);
             
+
+            // Задача 67: Напишите программу, которая будет принимать на вход число и возвращать сумму его цифр.
+            // 453 -> 12
+            // 45 -> 9
+
+            Console.WriteLine($"__________");
+            Console.WriteLine($"Задача 67:");
+
+
+            Console.WriteLine($"Введите число");
+            int number1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"Сумма цифр числа {number1} - {Recursion67(number1)}");
+
+            // Задача 69: Напишите программу, которая на вход принимает два числа A и B, и возводит число А в целую степень B с помощью рекурсии.
+
+            // методы    
+
+            
+            void PrintNumbersRecursion(int current_number, int count = 1)
+           {
+               if (count > current_number) return;
+               Console.Write(count);
+               PrintNumbersRecursion(current_number, count+1);
+               
+           }
+           
+           void Recursion(int current_numberM, int current_numberN)
+           {
+               if (current_numberM > current_numberN) return;
+               Console.Write(current_numberM);
+               Recursion(current_numberM, current_numberM+1);
+           }  
+           
+           int Recursion67(int current_number, int sum = 0)
+           {
+               if (current_number  == 0) 
+               {
+                   return sum;
+               }
+               sum += current_number%10;
+               return Recursion67(current_number/10, sum);
+               
+           }      
+
             int[,] RandArray(int max_rows, int max_columns, int start, int end)             // метод генерации массива целых чисел от 3 и более строк и от 3 и более столбцов     
             {
                 Random random = new Random();
@@ -70,6 +140,9 @@ namespace ConsoleApp
                     PrintArray(result_matrix);
                 }      
             }
+
+            
+
 
 
         }
