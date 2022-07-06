@@ -36,6 +36,12 @@ namespace ConsoleApp
             
             // Задача 58: Заполните спирально массив 4 на 4 числами от 1 до 16.
 
+            Console.WriteLine($"\n__________");
+            Console.WriteLine($"Задача 58:");
+
+
+                
+
 
 
             // Семинар 8.
