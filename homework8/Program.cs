@@ -31,16 +31,17 @@ namespace ConsoleApp
             PrintArray(array_ex56);
             SearchRowMaxSumElement(array_ex56);
 
-
-
             
             // Задача 58: Заполните спирально массив 4 на 4 числами от 1 до 16.
 
             Console.WriteLine($"\n__________");
             Console.WriteLine($"Задача 58:");
+            
+            // PrintArray(SpiralArray(2,2));
+            // PrintArray(SpiralArray(3,3));
+            PrintArray(SpiralArray(4,4));
+            // PrintArray(SpiralArray(5,5));
 
-
-                
 
 
 
@@ -99,7 +100,7 @@ namespace ConsoleApp
                 }
             }
 
-            int[,] SortingLines (int[,] array)             // метод генерации массива целых чисел от 3 и более строк и от 3 и более столбцов     
+            int[,] SortingLines (int[,] array)             // метод сортировки строк     
             {
                 int max = array[0,0];
 
@@ -123,7 +124,7 @@ namespace ConsoleApp
                 return array;
             }
 
-            void SearchRowMaxSumElement (int[,] array)
+            void SearchRowMaxSumElement (int[,] array) // метод поиска строки с максимальной суммой элементов
             {
                 int[] sum = new int [array.GetLength(0)];
                 int min = sum[0];
@@ -145,13 +146,61 @@ namespace ConsoleApp
                         min_row_id = i;
                     }
                 }
-
                 Console.WriteLine($"Строка с id - {min_row_id} имеет наименьшую сумму {min}");
                 Console.WriteLine($"Счет строк начинается с 0");
-
-
-
             }
+
+            
+            // метод генерации массива [4,4] с цифрами от 1 до 16 в виде спирали (так же работает работает (с параметрами [2,2], [3,3], [5,5]))         
+            int[,] SpiralArray (int row = 4, int column = 4)            
+            {
+                int[,] array = new int[row,column];
+                int sum = 0;                                            // накопитель                                    
+                int top = 0;                                            // строка старта (верх)
+                int right = array.GetLength(1)-1;                       // правая сторона
+                int bottom = array.GetLength(0)-1;                      // строка с низу
+                int left = 0;                                           // левая сторона
+                int start = 1;                                          // переменная с 1 чтобы счет начался не с 0
+                
+                int shift = 0;                                          // переменная сдвига начинаем с 0 по проходу круга убавляем на 1
+                
+                while(sum < (row*column)+1)                             
+                {
+                    for (int j = shift; j <= right-shift; j++)          // право 
+                    {
+                        array[top, j] = sum+start;                      // для 1 ячейки задаем 1 через start
+                        sum++;
+                    }
+                    
+                    for (int i = shift; i <= right; i++)                //  низ
+                    {
+                        array[i, right] = sum;
+                        sum++;
+                    }
+
+                    for (int j = right-1; j > shift-1; j--)             // лево 
+                    {
+                        array[bottom, j] = sum;
+                        sum++;
+                    }
+                    for (int i = bottom-1; i > left; i--)               //  верх
+                    {
+                        array[i, left] = sum;
+                        sum++;
+                    }
+                    start = 0;                                          // обнуляем старт больше он не понадобится
+                    shift++;                                            // увеличиваем сдвиг
+
+                    top++;
+                    left++;
+
+                    right--;                                            
+                    bottom--;                                           
+
+                }
+                return array;
+            }
+            
 
 
         }
