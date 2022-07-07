@@ -27,7 +27,7 @@ namespace ConsoleApp
             Console.WriteLine($"Задача 56:");
 
 
-            int[,] array_ex56 = RandArray(4, 3, 4, 3, -9, 10);
+            int[,] array_ex56 = RandArray(3, 4, 3, 4, -9, 10);
             PrintArray(array_ex56);
             SearchRowMaxSumElement(array_ex56);
 
@@ -42,19 +42,29 @@ namespace ConsoleApp
             PrintArray(SpiralArray(4,4));
             // PrintArray(SpiralArray(5,5));
 
-
-
-
             // Семинар 8.
-            // Дополнительные задачи.
+            // Дополнительные задачи.__________________________________
 
             // Задача 1. Дан двумерный массив. Заменить в нём элементы первой строки элементами главной диагонали. А элементы последней строки, элементами побочной диагонали.
 
-            //  1   2   3   4                1   6  11 15
-            //  5   6   7   8     =>       5   6   7  8 
-            // 9  10 11 12                9  10 11 12
-            // 12 13 14 15              12 10  7  4
+            
+            // 1    2   3   4              1   6   11  15
+            // 5    6   7   8     =>       5   6   7   8 
+            // 9    10  11  12             9   10  11  12
+            // 12   13  14  15             12  10  7   4
 
+            Console.WriteLine($"\n__________");
+            Console.WriteLine($"Доп. Задача 1:");
+
+            int[,] array_dop_ex1 = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{12,13,14,15}}; 
+            
+            PrintArray(array_dop_ex1);
+            Console.WriteLine($"\n__________");
+
+            
+            PrintArray(TransformationArray(array_dop_ex1));
+            
+            
             // Задача 2. Дан двумерный массив, заполненный случайными числами от -9 до 9. Подсчитать частоту вхождения каждого числа в массив, используя словарь.
             // Справка:
             // https://docs.microsoft.com/ru-ru/dotnet/api/system.collections.generic.dictionary-2?view=net-6.0
@@ -68,9 +78,11 @@ namespace ConsoleApp
             // 3  4  9
 
 
+
+
             // __________МЕТОДЫ____________
 
-            int[,] RandArray(int min_rows, int min_columns, int max_rows, int max_columns, int start, int end)             // метод генерации массива целых чисел от 3 и более строк и от 3 и более столбцов     
+            int[,] RandArray(int min_rows, int min_columns, int max_rows, int max_columns, int start, int end)            
             {
                 Random random = new Random();
                 int rows = random.Next(min_rows,max_rows);
@@ -197,6 +209,32 @@ namespace ConsoleApp
                     right--;                                            
                     bottom--;                                           
 
+                }
+                return array;
+            }
+
+            int[,] TransformationArray(int[,] array)
+            {
+                int quantity_row = array.GetLength(0);
+                int quantity_column = array.GetLength(1);
+                int temp_number = array[0,quantity_column-1]; // так как меняем диаганали на строки 1 значение затрется его надо сохранить (либо верхнеее правое/либо нижнее правое)
+
+                for(int i = 0; i < quantity_row; i++)
+                {
+                    for (int j = 0; j < quantity_column; j++)
+                    {
+                        if (i == 0)
+                        {
+                            array[i, j] = array[i+j, j+i];
+                        } 
+                        if (i == 3)
+                        {
+                            array[i,j] = array[i-j, j];
+                            if (j == 3) array[i,j] = temp_number;
+
+                        }
+                        
+                    }                    
                 }
                 return array;
             }
