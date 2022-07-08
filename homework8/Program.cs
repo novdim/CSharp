@@ -139,7 +139,7 @@ namespace ConsoleApp
             void SearchRowMaxSumElement (int[,] array) // метод поиска строки с максимальной суммой элементов
             {
                 int[] sum = new int [array.GetLength(0)];
-                int min = sum[0];
+                
                 int min_row_id = 0;
 
                 for(int i = 0; i < array.GetLength(0); i++)
@@ -150,7 +150,9 @@ namespace ConsoleApp
                     }                  
                 }
 
-                for(int i = 1; i < sum.Length; i++)
+                int min = sum[0];
+
+                for(int i = 0; i < sum.Length; i++)
                 {
                     if (sum[i] < min)
                     {
