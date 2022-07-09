@@ -39,7 +39,7 @@ namespace ConsoleApp
             
             // PrintArray(SpiralArray(2,2));
             // PrintArray(SpiralArray(3,3));
-            PrintArray(SpiralArray(4,4));
+            PrintArray(SpiralArray(7,6));
             // PrintArray(SpiralArray(5,5));
 
             // Семинар 8.
@@ -179,7 +179,7 @@ namespace ConsoleApp
                 // заполнение периметра 
 
 
-                    for (int j = 0; j < length_row; j++)        
+                    for (int j = 0; j < length_row-1; j++)        
                     {
                         array[0, j] = sum;                      
                         sum++;
@@ -192,15 +192,15 @@ namespace ConsoleApp
                     }
 
 
-                    for (int j = length_row-2; j>=0 ; j--)        
+                    for (int j = length_row-2; j >= 0 ; j--)        
                     {
                         array[length_row-1, j] = sum;                      
                         sum++;
                     }
 
-                    for (int j = length_column-2; j > 0; j--)                   
+                    for (int i = length_column-1; i > 0; i--)                   
                     {
-                        array[j, 0] = sum;                      
+                        array[i, 0] = sum;                      
                         sum++;
                     }
 
