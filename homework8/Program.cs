@@ -165,53 +165,88 @@ namespace ConsoleApp
             }
 
             
-            // метод генерации массива [4,4] с цифрами от 1 до 16 в виде спирали (так же работает работает (с параметрами [2,2], [3,3], [5,5]))         
+            // метод генерации массива [4,4] с цифрами от 1 до 16 в виде спирали (так же работает работает (с параметрами [2,2], [3,3], [5,5]))  
+
             int[,] SpiralArray (int row = 4, int column = 4)            
             {
                 int[,] array = new int[row,column];
-                int sum = 0;                                            // накопитель                                    
-                int top = 0;                                            // строка старта (верх)
-                int right = array.GetLength(1)-1;                       // правая сторона
-                int bottom = array.GetLength(0)-1;                      // строка с низу
-                int left = 0;                                           // левая сторона
-                int start = 1;                                          // переменная с 1 чтобы счет начался не с 0
+                int sum = 1;                                            
+
+                int length_row = array.GetLength(0);                       
+                int length_column = array.GetLength(1);                 
                 
-                int shift = 0;                                          // переменная сдвига начинаем с 0 по проходу круга убавляем на 1
+
+                // заполнение периметра 
+
+
+                    for (int j = 0; j < length_row; j++)        
+                    {
+                        array[0, j] = sum;                      
+                        sum++;
+                    }
+
+                    for (int i = 1; i < length_column; i++)                   
+                    {
+                        array[i, length_column-1] = sum;                      
+                        sum++;
+                    }
+
+
+                    for (int j = length_row-2; j>=0 ; j--)        
+                    {
+                        array[length_row-1, j] = sum;                      
+                        sum++;
+                    }
+
+                    for (int j = length_column-2; j > 0; j--)                   
+                    {
+                        array[j, 0] = sum;                      
+                        sum++;
+                    }
+
+                    int coordinat_i = 1;
+                    int coordinat_j = 1;
+
+
+                    while (sum < length_row * length_column) 
+                    {
+                        while (array[coordinat_i, coordinat_j+1] == 0)
+                        {
+                            array[coordinat_i, coordinat_j] = sum;
+                            sum++;
+                            coordinat_j++;
+                        }
+                        while (array[coordinat_i+1, coordinat_j] == 0)
+                        {
+                            array[coordinat_i, coordinat_j] = sum;
+                            sum++;
+                            coordinat_i++;
+
+                        }
+                        while (array[coordinat_i, coordinat_j-1] == 0)
+                        {
+                            array[coordinat_i, coordinat_j] = sum;
+                            sum++;
+                            coordinat_j--;
+                        }
+                        while (array[coordinat_i-1, coordinat_j] == 0)
+                        {
+                            array[coordinat_i, coordinat_j] = sum;
+                            sum++;   
+                            coordinat_i--;
+                        }
+                    }
+
+                    for (int i = 0; i < length_row; i++)                   
+                    {
+                        for (int j = 0; j < length_column; j++)                   
+                        {   
+                            if (array[i, j] == 0) array[i, j] = sum;                      
+                        }
+                    }
+
+
                 
-                while(sum < (row*column)+1)                             
-                {
-                    for (int j = shift; j <= right-shift; j++)          // право 
-                    {
-                        array[top, j] = sum+start;                      // для 1 ячейки задаем 1 через start
-                        sum++;
-                    }
-                    
-                    for (int i = shift; i <= right; i++)                //  низ
-                    {
-                        array[i, right] = sum;
-                        sum++;
-                    }
-
-                    for (int j = right-1; j > shift-1; j--)             // лево 
-                    {
-                        array[bottom, j] = sum;
-                        sum++;
-                    }
-                    for (int i = bottom-1; i > left; i--)               //  верх
-                    {
-                        array[i, left] = sum;
-                        sum++;
-                    }
-                    start = 0;                                          // обнуляем старт больше он не понадобится
-                    shift++;                                            // увеличиваем сдвиг
-
-                    top++;
-                    left++;
-
-                    right--;                                            
-                    bottom--;                                           
-
-                }
                 return array;
             }
 
