@@ -39,7 +39,7 @@ namespace ConsoleApp
             
             // PrintArray(SpiralArray(2,2));
             // PrintArray(SpiralArray(3,3));
-            PrintArray(SpiralArray(7,6));
+            PrintArray(SpiralArray(5,11));
             // PrintArray(SpiralArray(5,5));
 
             // Семинар 8.
@@ -170,83 +170,36 @@ namespace ConsoleApp
             int[,] SpiralArray (int row = 4, int column = 4)            
             {
                 int[,] array = new int[row,column];
-                int sum = 1;                                            
 
-                int length_row = array.GetLength(0);                       
-                int length_column = array.GetLength(1);                 
-                
+                int steps = column;
+                int length_array = array.Length;
+                int index_i = 0;                
+                int index_j = 0;
 
-                // заполнение периметра 
+                int change_i = 0;
+                int change_j = 1;
 
+                int rotate = 0;
 
-                    for (int j = 0; j < length_row-1; j++)        
+                    for (int i = 0; i < length_array; i++)        
                     {
-                        array[0, j] = sum;                      
-                        sum++;
-                    }
+                        array[index_i, index_j] = i + 1;
 
-                    for (int i = 1; i < length_column; i++)                   
-                    {
-                        array[i, length_column-1] = sum;                      
-                        sum++;
-                    }
-
-
-                    for (int j = length_row-2; j >= 0 ; j--)        
-                    {
-                        array[length_row-1, j] = sum;                      
-                        sum++;
-                    }
-
-                    for (int i = length_column-1; i > 0; i--)                   
-                    {
-                        array[i, 0] = sum;                      
-                        sum++;
-                    }
-
-                    int coordinat_i = 1;
-                    int coordinat_j = 1;
-
-
-                    while (sum < length_row * length_column) 
-                    {
-                        while (array[coordinat_i, coordinat_j+1] == 0)
+                        steps--;
+                        
+                        if (steps == 0)
                         {
-                            array[coordinat_i, coordinat_j] = sum;
-                            sum++;
-                            coordinat_j++;
+                            steps = row * ((rotate+1)%2) + column * (rotate%2) - 1 - rotate/2;
+                            int temp = change_i;
+                            
+                            change_i = change_j;
+                            change_j = -temp;
+                            rotate++;
                         }
-                        while (array[coordinat_i+1, coordinat_j] == 0)
-                        {
-                            array[coordinat_i, coordinat_j] = sum;
-                            sum++;
-                            coordinat_i++;
-
-                        }
-                        while (array[coordinat_i, coordinat_j-1] == 0)
-                        {
-                            array[coordinat_i, coordinat_j] = sum;
-                            sum++;
-                            coordinat_j--;
-                        }
-                        while (array[coordinat_i-1, coordinat_j] == 0)
-                        {
-                            array[coordinat_i, coordinat_j] = sum;
-                            sum++;   
-                            coordinat_i--;
-                        }
+                        index_i += change_i;
+                        index_j += change_j;
                     }
 
-                    for (int i = 0; i < length_row; i++)                   
-                    {
-                        for (int j = 0; j < length_column; j++)                   
-                        {   
-                            if (array[i, j] == 0) array[i, j] = sum;                      
-                        }
-                    }
-
-
-                
                 return array;
             }
 
