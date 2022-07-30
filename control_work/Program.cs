@@ -30,6 +30,7 @@ namespace ConsoleApp
                 {
                     Console.Write($"{currentArray[i]}, ");
                 }
+                Console.WriteLine("\b \b\b \b");
             }
 
             string[] SortingArray (string[] array)            
