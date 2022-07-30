@@ -11,7 +11,15 @@ namespace ConsoleApp
             // Первоначальный массив можно ввести с клавиатуры, либо задать на старте выполнения алгоритма. 
             // При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами.
 
-            string[] array = new string[] {"1234", "1567", "-2", "computer science"};
+            // **Примеры**:
+
+            // ["hello", "2", "world", ":-)"] -> ["2", ":-)"]
+
+            // ["1234", "1567", "-2", "computer science"] -> ["-2"]
+
+            // ["Russia", "Denmark", "Kazan"] -> []
+
+            string[] array = new string[] {"hello", "2", "world", ":-)"};
             
             
             PrintArray(SortingArray(array));
@@ -20,13 +28,14 @@ namespace ConsoleApp
             {
                 for (int i = 0; i < currentArray.Length; i++)
                 {
-                    Console.Write($"{currentArray[i]} ");
+                    Console.Write($"{currentArray[i]}, ");
                 }
             }
 
             string[] SortingArray (string[] array)            
             {
                 int count = 0;
+                int id = 0;
                 int length_array = array.Length;
                 
                 for (int i = 0; i < length_array; i++)
@@ -37,29 +46,18 @@ namespace ConsoleApp
                     }
                 }
 
-                int[] id_elements = new int[count];
-                int id = 0;
+                string[] new_array = new string[count];
 
                 for (int i = 0; i < length_array; i++)
                 {
-
-                    if (array[i].Length <= 3)
+                    if (array[i].Length <= 3) 
                     {
-                        id_elements[id] = i;
-                        id++;
+                        new_array[id] = array[i];
+                        if (id < count-1) id++;
                     }
                 }
 
-                string[] new_array = new string[count];
-
-                for (int i = 0; i < count; i++)
-                {
-                        new_array[i] = array[id_elements[i]];
-                }
-
                 return new_array;
-
-                
             }
 
 
