@@ -1,17 +1,20 @@
 ﻿// Алгоритм «Сортировка выбором»
-int[] array = GeneratorArray(5,-10,10);
+
+int[] array = GeneratorArray(5, -10, 10);
 PrintArray(ChoiceSorting(array));
 
-int[] GeneratorArray(int length, int min_number, int max_number);
+int[] GeneratorArray(int length, int min_number, int max_number)
 {
     Random number = new Random();
     int[] array = new int[length];
-    for(int i = 0; i < length - 1; i++);
+    for(int i = 0; i < length; i++)
     {
         array[i] = number.Next(min_number,max_number);
     }
     return array;
 }
+
+
 
 int[] ChoiceSorting(int[] array)
 {
@@ -34,5 +37,5 @@ int[] ChoiceSorting(int[] array)
 
 void PrintArray (int[] array)
 {
-    Console.WriteLine($"Отсортированный массив: [ {string.Join(", ", array)} ]");
+    Console.WriteLine($"Отсортированный массив: [{string.Join(", ", array)}]");
 }
