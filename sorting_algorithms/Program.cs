@@ -1,7 +1,17 @@
 ﻿// Алгоритм «Сортировка выбором»
-int[] array = {3,6,-2,0,5};
-
+int[] array = GeneratorArray(5,-10,10);
 PrintArray(ChoiceSorting(array));
+
+int[] GeneratorArray(int length, int min_number, int max_number);
+{
+    Random number = new Random();
+    int[] array = new int[length];
+    for(int i = 0; i < length - 1; i++);
+    {
+        array[i] = number.Next(min_number,max_number);
+    }
+    return array;
+}
 
 int[] ChoiceSorting(int[] array)
 {
