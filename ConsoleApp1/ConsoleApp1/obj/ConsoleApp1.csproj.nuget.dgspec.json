@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dima\\Source\\Repos\\CSharp\\CSharp.csproj": {}
+    "C:\\Users\\Dima\\source\\repos\\CSharp\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dima\\Source\\Repos\\CSharp\\CSharp.csproj": {
+    "C:\\Users\\Dima\\source\\repos\\CSharp\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dima\\Source\\Repos\\CSharp\\CSharp.csproj",
-        "projectName": "CSharp",
-        "projectPath": "C:\\Users\\Dima\\Source\\Repos\\CSharp\\CSharp.csproj",
+        "projectUniqueName": "C:\\Users\\Dima\\source\\repos\\CSharp\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectName": "ConsoleApp1",
+        "projectPath": "C:\\Users\\Dima\\source\\repos\\CSharp\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
         "packagesPath": "C:\\Users\\Dima\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dima\\Source\\Repos\\CSharp\\obj\\",
+        "outputPath": "C:\\Users\\Dima\\source\\repos\\CSharp\\ConsoleApp1\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dima\\AppData\\Roaming\\NuGet\\NuGet.Config",
