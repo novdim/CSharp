@@ -1,0 +1,5 @@
+D:\GB\bootcamp\RaceOfSort\ListOfSorting\obj\Release\net6.0\ListOfSorting.csproj.AssemblyReference.cache
+D:\GB\bootcamp\RaceOfSort\ListOfSorting\obj\Release\net6.0\ListOfSorting.GeneratedMSBuildEditorConfig.editorconfig
+D:\GB\bootcamp\RaceOfSort\ListOfSorting\obj\Release\net6.0\ListOfSorting.AssemblyInfoInputs.cache
+D:\GB\bootcamp\RaceOfSort\ListOfSorting\obj\Release\net6.0\ListOfSorting.AssemblyInfo.cs
+D:\GB\bootcamp\RaceOfSort\ListOfSorting\obj\Release\net6.0\ListOfSorting.csproj.CoreCompileInputs.cache

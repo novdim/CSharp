@@ -1,0 +1,15 @@
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\bin\Debug\net6.0\sorting_algorithms.exe
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\bin\Debug\net6.0\sorting_algorithms.deps.json
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\bin\Debug\net6.0\sorting_algorithms.runtimeconfig.json
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\bin\Debug\net6.0\sorting_algorithms.dll
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\bin\Debug\net6.0\sorting_algorithms.pdb
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\obj\Debug\net6.0\sorting_algorithms.csproj.AssemblyReference.cache
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\obj\Debug\net6.0\sorting_algorithms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\obj\Debug\net6.0\sorting_algorithms.AssemblyInfoInputs.cache
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\obj\Debug\net6.0\sorting_algorithms.AssemblyInfo.cs
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\obj\Debug\net6.0\sorting_algorithms.csproj.CoreCompileInputs.cache
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\obj\Debug\net6.0\sorting_algorithms.dll
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\obj\Debug\net6.0\refint\sorting_algorithms.dll
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\obj\Debug\net6.0\sorting_algorithms.pdb
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\obj\Debug\net6.0\sorting_algorithms.genruntimeconfig.cache
+C:\Users\Dima\source\repos\CSharp\sorting_algorithms\sorting_algorithms\obj\Debug\net6.0\ref\sorting_algorithms.dll
